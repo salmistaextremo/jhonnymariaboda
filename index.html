@@ -34,7 +34,15 @@ body{
   overflow-x: hidden;
 }
 img{max-width: 100%; display: block}
-.oculto{display: none !important}
+
+/* Animación para iconos que no tienen loop nativo */
+.animated-icon {
+  animation: pulse-icon 2s infinite ease-in-out;
+}
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 
 /* Tipografías */
 .script{font-family: 'Great Vibes', cursive; color: var(--dorado)}
@@ -90,7 +98,7 @@ img{max-width: 100%; display: block}
 
 /* ==================== FECHA Y CONTEO (PÁGINA 2) ==================== */
 .fecha-seccion{
-  text-align: center; padding: 80px 20px 100px;
+  text-align: center; padding: 80px 20px 60px;
   position: relative;
 }
 .fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
@@ -107,14 +115,16 @@ img{max-width: 100%; display: block}
 .conteo-item .num{font-size: 3rem; color: var(--verde-oliva); line-height: 1}
 .conteo-item .lbl{font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-top: 5px}
 
-/* Borde rasgado verde */
-.borde-rasgado-top{
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%235a6b56'/%3E%3C/svg%3E");
-  height: 60px; background-size: 100% 100%; background-repeat: no-repeat; margin-bottom: -1px;
+/* ==================== OLAS SVG (CORRECCIÓN) ==================== */
+.wave-container {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: -1px;
 }
-.borde-rasgado-bottom{
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%235a6b56'/%3E%3C/svg%3E");
-  height: 60px; background-size: 100% 100%; background-repeat: no-repeat; margin-top: -1px;
+.wave-container svg {
+  width: 100%;
+  height: 50px;
+  display: block;
 }
 
 /* ==================== INVITADO Y PADRES (PÁGINA 3) ==================== */
@@ -127,7 +137,7 @@ img{max-width: 100%; display: block}
 .invitado .pases{font-size: 1.2rem; line-height: 1.5}
 .invitado .pases strong{font-size: 2rem; display: block; color: var(--dorado)}
 
-.padres{padding: 80px 20px; text-align: center}
+.padres{padding: 60px 20px 80px; text-align: center}
 .padres h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 40px}
 .padres-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto}
 .padres-col h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.85rem; color: var(--dorado); margin-bottom: 15px; text-transform: uppercase}
@@ -147,8 +157,28 @@ img{max-width: 100%; display: block}
   background: var(--verde-oliva); color: #fff; text-decoration: none;
   padding: 10px 25px; border-radius: 5px; font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
+  cursor: pointer; border: none;
 }
 .btn-ubicacion:hover{background: var(--verde-oscuro)}
+
+/* ==================== MODAL MAPA ==================== */
+.modal {
+  display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+  width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal.activo { display: flex; }
+.modal-content {
+  background-color: #fff; padding: 20px; border-radius: 15px;
+  width: 100%; max-width: 600px; position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.close-btn {
+  position: absolute; top: -15px; right: -15px; font-size: 30px;
+  cursor: pointer; color: #fff; background: var(--verde-oliva); 
+  width: 40px; height: 40px; border-radius: 50%; display: flex; 
+  align-items: center; justify-content: center; line-height: 1;
+}
 
 /* ==================== CRONOGRAMA (PÁGINA 5) ==================== */
 .cronograma{padding: 80px 20px; text-align: center}
@@ -261,7 +291,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
   <!-- PÁGINA 1: HERO -->
   <section class="hero">
-    <!-- FOTO PRINCIPAL: Reemplaza 'portada.jpg' con el nombre de tu foto -->
     <img src="portada.jpg" alt="Jhonny y María" class="hero-foto" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'">
     
     <div class="hero-texto">
@@ -293,13 +322,18 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     </div>
   </section>
 
-  <div class="borde-rasgado-top"></div>
+  <!-- OLA SVG SUPERIOR (Corregida) -->
+  <div class="wave-container" style="background-color: var(--fondo-marmol);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+    </svg>
+  </div>
 
   <!-- PÁGINA 3: INVITADO Y PADRES -->
   <section class="seccion-verde invitado">
     <h3>QUERIDO (A)</h3>
     <!-- Nombre dinámico por URL -->
-    <div class="nombre-inv" id="nombre-invitado">Julio Zambrana</div>
+    <div class="nombre-inv" id="nombre-invitado">Invitado Especial</div>
     <p class="pases">
       Hemos Reservado<br>
       <strong id="pases">2</strong>
@@ -308,7 +342,12 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     </p>
   </section>
 
-  <div class="borde-rasgado-bottom"></div>
+  <!-- OLA SVG INFERIOR (Corregida) -->
+  <div class="wave-container" style="background-color: var(--verde-oliva);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+    </svg>
+  </div>
 
   <section class="padres">
     <h2>Agradecidos a<br>Nuestros Padres</h2>
@@ -329,19 +368,19 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="eventos-grid">
       <!-- Ceremonia -->
       <div class="evento-card">
-        <iconify-icon icon="line-md:church" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+        <iconify-icon icon="line-md:church" class="animated-icon" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Ceremonia Religiosa</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
-        <a href="https://maps.google.com/?q=Restaurante+La+Casa+1992+Futbolmania" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
+        <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación</button>
       </div>
       <!-- Recepción -->
       <div class="evento-card">
-        <iconify-icon icon="line-md:confetti" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+        <iconify-icon icon="line-md:confetti-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Recepción Social</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
-        <a href="https://maps.google.com/?q=Restaurante+La+Casa+1992+Futbolmania" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
+        <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación</button>
       </div>
     </div>
   </section>
@@ -351,7 +390,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <h2>Cronograma</h2>
     <div class="crono-grid">
       <div class="crono-item">
-        <iconify-icon icon="line-md:confetti" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
+        <iconify-icon icon="line-md:confetti-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
         <div class="hora">5:00 pm</div>
         <div class="nombre">Recepción<br>Social</div>
       </div>
@@ -372,7 +411,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <section class="galeria">
     <h2>Nosotros</h2>
     <div class="galeria-grid">
-      <!-- REEMPLAZA 'nosotros1.jpg', 'nosotros2.jpg', etc. con tus fotos -->
       <img src="nosotros1.jpg" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80'">
       <img src="nosotros2.jpg" alt="Foto 2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
       <img src="nosotros3.jpg" alt="Foto 3" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80'">
@@ -388,7 +426,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       <iconify-icon icon="line-md:image-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
       <h3>Comparte tus Fotos</h3>
       <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
-      <!-- Enlace a la carpeta de Google Drive -->
       <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ubicacion" style="display:inline-block;">Compartir Fotos</a>
     </div>
   </section>
@@ -407,7 +444,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       </div>
       <!-- Pago Móvil -->
       <div class="regalo-card">
-        <!-- REEMPLAZA 'qr.jpg' con tu imagen de QR -->
         <img src="qr.jpg" alt="Pago Móvil Banesco" class="qr" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <p>
           Banesco<br>
@@ -477,18 +513,25 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
 </main>
 
+<!-- MODAL MAPA (Oculto por defecto) -->
+<div id="map-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeMap()">&times;</span>
+    <iframe id="map-iframe" src="" width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
 <script>
 // ==========================================
 // 1. CONFIGURACIÓN
 // ==========================================
-// Fecha: 30 de Noviembre de 2026 a las 5:00 PM
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
 
 // ⚠️ COLOCA AQUÍ EL NÚMERO DE WHATSAPP PARA EL RSVP (Sin +, ni espacios)
 const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO
 
 // ==========================================
-// 2. LECTURA DE URL (?nombre=...&invitados=...)
+// 2. LECTURA DE URL (Nombre del invitado)
 // ==========================================
 const params = new URLSearchParams(window.location.search);
 const nombreInvitado = params.get('nombre') || 'Invitado Especial';
@@ -541,7 +584,20 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 5. ENVÍO DE RSVP POR WHATSAPP
+// 5. MODAL DEL MAPA (Ubicación)
+// ==========================================
+function openMap(url) {
+  document.getElementById('map-iframe').src = url;
+  document.getElementById('map-modal').classList.add('activo');
+}
+function closeMap() {
+  document.getElementById('map-modal').classList.remove('activo');
+  // Limpiar el iframe para detener la carga
+  setTimeout(() => { document.getElementById('map-iframe').src = ""; }, 300);
+}
+
+// ==========================================
+// 6. ENVÍO DE RSVP POR WHATSAPP
 // ==========================================
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   e.preventDefault();
