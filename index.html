@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhonny & María — ¡Nos Casamos!</title>
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ==================== VARIABLES ==================== */
+:root{
+  --fondo-marmol: #f7f6f2;
+  --verde-oliva: #5a6b56;
+  --verde-oscuro: #465440;
+  --dorado: #b5975a;
+  --texto: #333333;
+  --texto-suave: #666666;
+  --blanco: #ffffff;
+}
+*{margin: 0; padding: 0; box-sizing: border-box}
+html{scroll-behavior: smooth}
+body{
+  background-color: var(--fondo-marmol);
+  /* Textura de mármol sutil de fondo */
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  color: var(--texto);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+img{max-width: 100%; display: block}
+.oculto{display: none !important}
+
+/* Tipografías */
+.script{font-family: 'Great Vibes', cursive; color: var(--dorado)}
+.sans{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase}
+
+/* ==================== PORTADA ==================== */
+#portada{
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--fondo-marmol);
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+#portada.abrir{opacity: 0; transform: scale(1.05); pointer-events: none}
+.btn-abrir{
+  padding: 15px 40px; background: var(--verde-oliva); color: #fff;
+  border: none; border-radius: 30px; font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem; letter-spacing: 0.15em; cursor: pointer; text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;
+}
+.btn-abrir:hover{background: var(--verde-oscuro)}
+
+/* ==================== BOTÓN MÚSICA ==================== */
+#music-btn{
+  position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  width: 45px; height: 45px; border-radius: 50%;
+  background: rgba(90, 107, 86, 0.8); color: #fff; border: none;
+  font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(5px); transition: transform 0.3s;
+}
+#music-btn.playing{animation: spin 4s linear infinite}
+@keyframes spin{100%{transform: rotate(360deg)}}
+
+/* ==================== HERO (PÁGINA 1) ==================== */
+.hero{
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 40px; gap: 40px;
+}
+.hero-foto{
+  width: 100%; height: 80vh; object-fit: cover;
+  border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.hero-texto{text-align: center; padding: 20px}
+.hero-texto h1{
+  font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 8vw, 7rem);
+  color: var(--dorado); line-height: 0.9; margin-bottom: 20px;
+}
+.hero-texto h1 span{font-size: 0.4em; display: block; margin: 10px 0}
+.hero-texto .versiculo{
+  font-style: italic; font-size: 1.2rem; color: var(--texto-suave);
+  margin-top: 40px; line-height: 1.6; max-width: 400px; margin-left: auto; margin-right: auto;
+}
+
+/* ==================== FECHA Y CONTEO (PÁGINA 2) ==================== */
+.fecha-seccion{
+  text-align: center; padding: 80px 20px 100px;
+  position: relative;
+}
+.fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
+.fecha-seccion .numero{font-size: 6rem; line-height: 1; color: var(--verde-oliva); margin: 10px 0; font-family: 'Cormorant Garamond', serif}
+.fecha-seccion .mes-año{font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--dorado); text-transform: uppercase; margin-bottom: 20px}
+.fecha-seccion .hora{font-size: 2rem; font-style: italic; color: var(--texto); margin-bottom: 30px}
+
+.conteo-box{
+  border: 1px solid var(--dorado); border-radius: 20px;
+  padding: 30px 20px; max-width: 500px; margin: 0 auto;
+}
+.conteo-box h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.9rem; color: var(--dorado); margin-bottom: 20px; text-transform: uppercase}
+.conteo-numeros{display: flex; justify-content: center; gap: 30px}
+.conteo-item .num{font-size: 3rem; color: var(--verde-oliva); line-height: 1}
+.conteo-item .lbl{font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-top: 5px}
+
+/* Borde rasgado verde */
+.borde-rasgado-top{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%235a6b56'/%3E%3C/svg%3E");
+  height: 60px; background-size: 100% 100%; background-repeat: no-repeat; margin-bottom: -1px;
+}
+.borde-rasgado-bottom{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%235a6b56'/%3E%3C/svg%3E");
+  height: 60px; background-size: 100% 100%; background-repeat: no-repeat; margin-top: -1px;
+}
+
+/* ==================== INVITADO Y PADRES (PÁGINA 3) ==================== */
+.seccion-verde{
+  background-color: var(--verde-oliva);
+  color: #fff; text-align: center; padding: 60px 20px;
+}
+.invitado h3{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; font-weight: 400; margin-bottom: 10px}
+.invitado .nombre-inv{font-family: 'Great Vibes', cursive; font-size: 4rem; color: #fff; margin-bottom: 20px}
+.invitado .pases{font-size: 1.2rem; line-height: 1.5}
+.invitado .pases strong{font-size: 2rem; display: block; color: var(--dorado)}
+
+.padres{padding: 80px 20px; text-align: center}
+.padres h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 40px}
+.padres-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto}
+.padres-col h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.85rem; color: var(--dorado); margin-bottom: 15px; text-transform: uppercase}
+.padres-col p{font-size: 1.2rem; color: var(--texto); font-style: italic; line-height: 1.6}
+
+/* ==================== CEREMONIA Y RECEPCIÓN (PÁGINA 4) ==================== */
+.eventos{padding: 60px 20px; text-align: center}
+.eventos-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto}
+.evento-card{
+  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
+  padding: 40px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.evento-card svg{width: 60px; height: 60px; fill: none; stroke: var(--dorado); stroke-width: 1; margin-bottom: 20px}
+.evento-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
+.evento-card .lugar{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 20px; text-transform: uppercase}
+.evento-card .hora{font-size: 2rem; font-style: italic; margin-bottom: 25px}
+.btn-ubicacion{
+  background: var(--verde-oliva); color: #fff; text-decoration: none;
+  padding: 10px 25px; border-radius: 5px; font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
+}
+.btn-ubicacion:hover{background: var(--verde-oscuro)}
+
+/* ==================== CRONOGRAMA (PÁGINA 5) ==================== */
+.cronograma{padding: 80px 20px; text-align: center}
+.cronograma h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
+.crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1000px; margin: 0 auto}
+.crono-item{flex: 1; min-width: 120px; text-align: center}
+.crono-item svg{width: 40px; height: 40px; fill: none; stroke: var(--dorado); stroke-width: 1; margin: 0 auto 15px}
+.crono-item .hora{font-size: 1.5rem; font-style: italic; margin-bottom: 5px}
+.crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
+
+/* ==================== GALERÍA (PÁGINA 6) ==================== */
+.galeria{padding: 60px 20px; text-align: center}
+.galeria h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 40px}
+.galeria-grid{display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto}
+.galeria-grid img{width: 100%; height: 300px; object-fit: cover; border-radius: 15px}
+
+/* ==================== COMPARTIR FOTOS Y REGALOS ==================== */
+.compartir{padding: 60px 20px; text-align: center}
+.card-compartir{
+  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
+  padding: 50px 30px; max-width: 600px; margin: 0 auto;
+}
+.card-compartir svg{width: 60px; height: 60px; stroke: var(--dorado); fill: none; stroke-width: 1; margin: 0 auto 20px}
+.card-compartir h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px}
+.card-compartir p{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--texto-suave); margin-bottom: 30px; text-transform: uppercase}
+
+.regalos{background: var(--verde-oliva); color: #fff; padding: 60px 20px; text-align: center}
+.regalos h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin-bottom: 10px}
+.regalos .sub{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 20px; opacity: 0.9}
+.regalos .texto{font-style: italic; font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9}
+.regalos-grid{display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 800px; margin: 0 auto}
+.regalo-card{
+  background: transparent; border: 1px solid #fff; border-radius: 20px;
+  padding: 30px 20px; flex: 1; min-width: 250px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.regalo-card svg{width: 50px; height: 50px; stroke: #fff; fill: none; stroke-width: 1; margin-bottom: 20px}
+.regalo-card img.qr{width: 150px; height: 150px; margin-bottom: 20px; border-radius: 10px; background: #fff; padding: 5px}
+.regalo-card p{font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6}
+
+/* ==================== VESTIMENTA Y RECOMENDACIONES ==================== */
+.recomendaciones{padding: 80px 20px; text-align: center}
+.recomendaciones .aviso{
+  font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em;
+  color: var(--texto-suave); max-width: 600px; margin: 0 auto 50px; line-height: 1.8;
+}
+.vestimenta-card{
+  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
+  padding: 40px; max-width: 600px; margin: 0 auto 50px;
+}
+.vestimenta-card svg{width: 80px; height: 80px; stroke: var(--dorado); fill: none; stroke-width: 0.5; margin: 0 auto 15px}
+.vestimenta-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
+.vestimenta-card .tipo{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 30px}
+.paleta-colores{display: flex; justify-content: center; gap: 15px; margin-bottom: 20px}
+.color-box{width: 40px; height: 40px; border-radius: 3px}
+.paleta-texto{font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: var(--texto-suave)}
+.nota-reserva{font-size: 1rem; font-style: italic; color: #b23a3a; margin-top: 20px}
+
+/* ==================== RSVP (PÁGINA 11 Y 12) ==================== */
+.rsvp{padding: 80px 20px; text-align: center; background: url('https://www.transparenttextures.com/patterns/cream-paper.png')}
+.rsvp h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 15px; line-height: 1}
+.rsvp .frase{font-size: 1.2rem; font-style: italic; color: var(--texto-suave); margin-bottom: 40px}
+#rsvp-form{max-width: 500px; margin: 0 auto; text-align: left}
+.form-group{margin-bottom: 20px}
+.form-group label{display: block; font-size: 1rem; color: var(--texto-suave); margin-bottom: 5px}
+.form-group input, .form-group select, .form-group textarea{
+  width: 100%; padding: 12px 15px; border: 1px solid var(--texto-suave); border-radius: 8px;
+  background: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto); outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{border-color: var(--dorado)}
+.btn-enviar{
+  background: var(--verde-oliva); color: #fff; border: none; border-radius: 8px;
+  padding: 12px 30px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+  letter-spacing: 0.1em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 0 auto; transition: background 0.3s;
+}
+.btn-enviar:hover{background: var(--verde-oscuro)}
+
+/* ==================== FOOTER ==================== */
+footer{text-align: center; padding: 60px 20px; background: var(--fondo-marmol)}
+footer .te-esperamos{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; color: var(--texto-suave); margin-bottom: 20px}
+footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado)}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px){
+  .hero{grid-template-columns: 1fr; padding: 20px; gap: 20px}
+  .hero-foto{height: 50vh}
+  .padres-grid, .eventos-grid{grid-template-columns: 1fr}
+  .galeria-grid{grid-template-columns: repeat(2, 1fr)}
+  .galeria-grid img{height: 200px}
+  .crono-grid{flex-direction: column; gap: 30px}
+  .conteo-numeros{gap: 15px}
+  .conteo-item .num{font-size: 2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- BOTÓN MÚSICA -->
+<button id="music-btn" class="playing">♪</button>
+<!-- REEMPLAZA EL SRC POR TU CANCIÓN (MP3) -->
+<audio id="bg-music" loop autoplay>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PORTADA DE ENTRADA -->
+<div id="portada">
+  <button class="btn-abrir" onclick="document.getElementById('portada').classList.add('abrir'); setTimeout(()=>document.getElementById('portada').style.display='none', 1500)">Abrir Invitación</button>
+</div>
+
+<main>
+
+  <!-- PÁGINA 1: HERO -->
+  <section class="hero">
+    <!-- FOTO PRINCIPAL: Reemplaza 'portada.jpg' con el nombre de tu foto -->
+    <img src="portada.jpg" alt="Jhonny y María" class="hero-foto" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'">
+    
+    <div class="hero-texto">
+      <h1>Jhonny <span>&</span> María</h1>
+      <div style="color: var(--dorado); font-size: 1.5rem; margin: 20px 0;">❦</div>
+      <p class="versiculo">
+        “Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre”<br>
+        <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-style: normal; letter-spacing: 0.1em; display: block; margin-top: 10px;">MATEO 19:6</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- PÁGINA 2: FECHA Y CONTEO -->
+  <section class="fecha-seccion">
+    <div class="dia-semana">DOMINGO</div>
+    <div class="numero">30</div>
+    <div class="mes-año">NOVIEMBRE 2026</div>
+    <div class="hora">5:00 pm</div>
+    <div style="color: var(--dorado); font-size: 1.5rem; margin-bottom: 30px;">❦</div>
+
+    <div class="conteo-box">
+      <h4>Faltan</h4>
+      <div class="conteo-numeros" id="countdown">
+        <div class="conteo-item"><div class="num" id="dias">00</div><div class="lbl">Días</div></div>
+        <div class="conteo-item"><div class="num" id="horas">00</div><div class="lbl">Hrs.</div></div>
+        <div class="conteo-item"><div class="num" id="minutos">00</div><div class="lbl">Min.</div></div>
+        <div class="conteo-item"><div class="num" id="segundos">00</div><div class="lbl">Seg.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="borde-rasgado-top"></div>
+
+  <!-- PÁGINA 3: INVITADO Y PADRES -->
+  <section class="seccion-verde invitado">
+    <h3>QUERIDO (A)</h3>
+    <!-- Nombre dinámico por URL -->
+    <div class="nombre-inv" id="nombre-invitado">Julio Zambrana</div>
+    <p class="pases">
+      Hemos Reservado<br>
+      <strong id="pases">2</strong>
+      Pase(s)<br>
+      En tu honor
+    </p>
+  </section>
+
+  <div class="borde-rasgado-bottom"></div>
+
+  <section class="padres">
+    <h2>Agradecidos a<br>Nuestros Padres</h2>
+    <div class="padres-grid">
+      <div class="padres-col">
+        <h4>Padres de la Novia</h4>
+        <p>José Hernán Saavedra<br>Lizeth del Carmen Osinaga</p>
+      </div>
+      <div class="padres-col">
+        <h4>Padres del Novio</h4>
+        <p>Julio Maldonado Apaza<br>Ruth Quispe Honorio</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 4: CEREMONIA -->
+  <section class="eventos">
+    <div class="eventos-grid">
+      <!-- Ceremonia -->
+      <div class="evento-card">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 9v12h18V9l-9-7zm0 2.5l7 5.4V19H5V9.9l7-5.4zM12 5v2m-4 2v2m8-2v2m-8 5v5m8-5v5m-4-5v5"/></svg>
+        <h3>Ceremonia Religiosa</h3>
+        <div class="lugar">Restaurante<br>La Casa 1992</div>
+        <div class="hora">5:00 pm</div>
+        <a href="https://maps.google.com/?q=Restaurante+La+Casa+1992+Futbolmania" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
+      </div>
+      <!-- Recepción -->
+      <div class="evento-card">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <h3>Recepción Social</h3>
+        <div class="lugar">Restaurante<br>La Casa 1992</div>
+        <div class="hora">5:00 pm</div>
+        <a href="https://maps.google.com/?q=Restaurante+La+Casa+1992+Futbolmania" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 5: CRONOGRAMA -->
+  <section class="cronograma">
+    <h2>Cronograma</h2>
+    <div class="crono-grid">
+      <div class="crono-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 9v12h18V9l-9-7z"/></svg>
+        <div class="hora">5:00 pm</div>
+        <div class="nombre">Recepción<br>Social</div>
+      </div>
+      <div class="crono-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 00-3 3v14a3 3 0 006 0V5a3 3 0 00-3-3z"/></svg>
+        <div class="hora">6:00 pm</div>
+        <div class="nombre">Entrada de<br>la Novia</div>
+      </div>
+      <div class="crono-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 4h16v2H4zm0 4h16v2H4z"/></svg>
+        <div class="hora">8:00 pm</div>
+        <div class="nombre">Cena</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 6: NOSOTROS -->
+  <section class="galeria">
+    <h2>Nosotros</h2>
+    <div class="galeria-grid">
+      <!-- REEMPLAZA 'nosotros1.jpg', 'nosotros2.jpg', etc. con tus fotos -->
+      <img src="nosotros1.jpg" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros2.jpg" alt="Foto 2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros3.jpg" alt="Foto 3" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros4.jpg" alt="Foto 4" onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros5.jpg" alt="Foto 5" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros6.jpg" alt="Foto 6" onerror="this.src='https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=600&q=80'">
+    </div>
+  </section>
+
+  <!-- PÁGINA 7: COMPARTIR FOTOS -->
+  <section class="compartir">
+    <div class="card-compartir">
+      <svg viewBox="0 0 24 24"><path d="M21 19V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <h3>Comparte tus Fotos</h3>
+      <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
+      <!-- Aquí puedes poner un enlace a Google Drive o Drive de Fotos -->
+      <a href="#" class="btn-ubicacion" style="display:inline-block;">Compartir Fotos</a>
+    </div>
+  </section>
+
+  <!-- PÁGINA 8: REGALOS -->
+  <section class="regalos">
+    <h2>Sugerencia de Regalos</h2>
+    <p class="sub">TU PRESENCIA ES LA MAYOR BENDICIÓN PARA NOSOTROS</p>
+    <p class="texto">"Si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:"</p>
+    
+    <div class="regalos-grid">
+      <!-- Efectivo -->
+      <div class="regalo-card">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v4H6zm10 0h2v4h-2z"/></svg>
+        <p>Efectivo en Divisas $<br>(Habrá un buzón)</p>
+      </div>
+      <!-- Pago Móvil -->
+      <div class="regalo-card">
+        <!-- REEMPLAZA 'qr.jpg' con tu imagen de QR -->
+        <img src="qr.jpg" alt="Pago Móvil Banesco" class="qr" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <p>
+          Banesco<br>
+          C.I: V-27695778<br>
+          Tlf: 0412-0376834
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÁGINA 9 Y 10: RECOMENDACIONES Y VESTIMENTA -->
+  <section class="recomendaciones">
+    <div class="aviso">
+      AUNQUE AMAMOS A SUS PEQUEÑOS, ESTE DÍA ESPECIAL ES SOLO PARA ADULTOS, LES PEDIMOS QUE NOS ACOMPAÑEN SIN NIÑOS.
+    </div>
+
+    <div class="vestimenta-card">
+      <svg viewBox="0 0 24 24"><path d="M12 2C9.24 2 7 4.24 7 7v10c0 2.76 2.24 5 5 5s5-2.24 5-5V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3s-3-1.34-3-3V7c0-1.66 1.34-3 3-3z"/></svg>
+      <h3>Código de Vestimenta</h3>
+      <div class="tipo">Formal - Elegante</div>
+      
+      <div class="paleta-texto">Colores Sugeridos</div>
+      <div class="paleta-colores">
+        <div class="color-box" style="background:#465440;"></div>
+        <div class="color-box" style="background:#a68a61;"></div>
+        <div class="color-box" style="background:#593b22;"></div>
+      </div>
+      <p class="nota-reserva">El color blanco y el azul marino están reservados solo para los novios.</p>
+    </div>
+  </section>
+
+  <!-- PÁGINA 11 Y 12: RSVP -->
+  <section class="rsvp" id="rsvp">
+    <h2>Confirma tu<br>Asistencia</h2>
+    <p class="frase">Será de mucha alegría para nosotros contar con su compañía en este día tan importante.</p>
+
+    <form id="rsvp-form">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="nombre" required>
+      </div>
+      <div class="form-group">
+        <label>¿Asistirás?</label>
+        <select id="asistencia" required>
+          <option value="Sí, ahí estaré">Sí, ahí estaré</option>
+          <option value="No podré asistir">No podré asistir</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
+      </div>
+      <button type="submit" class="btn-enviar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Enviar
+      </button>
+      <div id="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--verde-oliva);"></div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="te-esperamos">¡TE ESPERAMOS!</div>
+    <h2>Jhonny y María</h2>
+    <div style="margin-top: 20px; font-size: 1.5rem; color: var(--dorado);">❦</div>
+  </footer>
+
+</main>
+
+<script>
+// ==========================================
+// 1. CONFIGURACIÓN
+// ==========================================
+// Fecha: 30 de Noviembre de 2026 a las 5:00 PM
+const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
+
+// ⚠️ COLOCA AQUÍ EL NÚMERO DE WHATSAPP PARA EL RSVP (Sin +, ni espacios)
+const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO
+
+// ==========================================
+// 2. LECTURA DE URL (?nombre=...&invitados=...)
+// ==========================================
+const params = new URLSearchParams(window.location.search);
+const nombreInvitado = params.get('nombre') || 'Invitado Especial';
+const pases = params.get('invitados') || '2';
+
+document.getElementById('nombre-invitado').textContent = nombreInvitado;
+document.getElementById('pases').textContent = pases;
+document.getElementById('nombre').value = nombreInvitado !== 'Invitado Especial' ? nombreInvitado : '';
+
+// ==========================================
+// 3. CUENTA REGRESIVA
+// ==========================================
+function actualizarConteo() {
+  const ahora = new Date().getTime();
+  const distancia = FECHA_BODA - ahora;
+
+  if (distancia < 0) {
+    document.getElementById('dias').innerText = '00';
+    document.getElementById('horas').innerText = '00';
+    document.getElementById('minutos').innerText = '00';
+    document.getElementById('segundos').innerText = '00';
+    return;
+  }
+
+  const d = Math.floor(distancia / (1000 * 60 * 60 * 24));
+  const h = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((distancia % (1000 * 60)) / 1000);
+
+  document.getElementById('dias').innerText = String(d).padStart(2, '0');
+  document.getElementById('horas').innerText = String(h).padStart(2, '0');
+  document.getElementById('minutos').innerText = String(m).padStart(2, '0');
+  document.getElementById('segundos').innerText = String(s).padStart(2, '0');
+}
+setInterval(actualizarConteo, 1000);
+actualizarConteo();
+
+// ==========================================
+// 4. MÚSICA DE FONDO
+// ==========================================
+const musicBtn = document.getElementById('music-btn');
+const audio = document.getElementById('bg-music');
+
+musicBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    musicBtn.classList.add('playing');
+  } else {
+    audio.pause();
+    musicBtn.classList.remove('playing');
+  }
+});
+
+// ==========================================
+// 5. ENVÍO DE RSVP POR WHATSAPP
+// ==========================================
+document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const nombre = document.getElementById('nombre').value;
+  const asistencia = document.getElementById('asistencia').value;
+  const mensaje = document.getElementById('mensaje').value;
+  
+  let texto = `*Confirmación de Asistencia*\n\n`;
+  texto += `👤 *Nombre:* ${nombre}\n`;
+  texto += `✅ *Asistencia:* ${asistencia}\n`;
+  texto += `👥 *Pases reservados:* ${pases}\n`;
+  if (mensaje) texto += `💬 *Mensaje:* ${mensaje}\n`;
+  texto += `\n_Enviado desde la invitación digital de Jhonny y María_`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
+  
+  document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
+});
+</script>
+
+</body>
+</html>
