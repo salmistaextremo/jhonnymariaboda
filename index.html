@@ -10,9 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Iconify para iconos animados -->
-<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-
 <style>
 /* ==================== VARIABLES ==================== */
 :root{
@@ -35,10 +32,26 @@ body{
 }
 img{max-width: 100%; display: block}
 
-/* Forzar centrado de los iconos */
-iconify-icon {
+/* ==================== CENTRADO DE ICONOS (NUEVO) ==================== */
+/* Esta clase se aplicará a todas las imágenes que sean iconos */
+.icono-centrado {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 20px auto; /* Centrado horizontal y margen inferior */
+  width: 60px;  /* Tamaño por defecto */
+  height: 60px;
+}
+.icono-cronograma {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 40px;
+  height: 40px;
+}
+.icono-pequeno {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
 }
 
 /* Tipografías */
@@ -272,7 +285,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
 <!-- BOTÓN MÚSICA -->
 <button id="music-btn">
-  <iconify-icon icon="line-md:music-loop" style="font-size: 24px; margin: 0;"></iconify-icon>
+  <img src="https://api.iconify.design/line-md:music-loop.svg?color=%23ffffff" alt="Música" style="width:24px; height:24px; margin:0;">
 </button>
 <audio id="bg-music" loop autoplay>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -363,8 +376,8 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="eventos-grid">
       <!-- Ceremonia -->
       <div class="evento-card">
-        <!-- ICONO DE IGLESIA CORREGIDO (mdi:church) -->
-        <iconify-icon icon="mdi:church" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+        <!-- ICONO DE IGLESIA (usando mdi:church con filtro de color) -->
+        <img src="https://api.iconify.design/mdi:church.svg?color=%23b5975a" alt="Iglesia" class="icono-centrado">
         <h3>Ceremonia Religiosa</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
@@ -372,8 +385,8 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       </div>
       <!-- Recepción -->
       <div class="evento-card">
-        <!-- ICONO DE RECEPCIÓN (line-md:confetti-loop) -->
-        <iconify-icon icon="line-md:confetti-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+        <!-- ICONO DE CONFETI (line-md:confetti-loop) -->
+        <img src="https://api.iconify.design/line-md:confetti-loop.svg?color=%23b5975a" alt="Confeti" class="icono-centrado">
         <h3>Recepción Social</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
@@ -387,18 +400,18 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <h2>Cronograma</h2>
     <div class="crono-grid">
       <div class="crono-item">
-        <iconify-icon icon="line-md:confetti-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
+        <img src="https://api.iconify.design/line-md:confetti-loop.svg?color=%23b5975a" alt="Recepción" class="icono-cronograma">
         <div class="hora">5:00 pm</div>
         <div class="nombre">Recepción<br>Social</div>
       </div>
       <div class="crono-item">
-        <iconify-icon icon="line-md:heart-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
+        <img src="https://api.iconify.design/line-md:heart-loop.svg?color=%23b5975a" alt="Entrada de la novia" class="icono-cronograma">
         <div class="hora">6:00 pm</div>
         <div class="nombre">Entrada de<br>la Novia</div>
       </div>
       <div class="crono-item">
-        <!-- ICONO DE CENA CORREGIDO (line-md:coffee-loop) -->
-        <iconify-icon icon="line-md:coffee-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
+        <!-- ICONO DE CENA (usando mdi:silverware-fork-knife) -->
+        <img src="https://api.iconify.design/mdi:silverware-fork-knife.svg?color=%23b5975a" alt="Cena" class="icono-cronograma">
         <div class="hora">8:00 pm</div>
         <div class="nombre">Cena</div>
       </div>
@@ -422,7 +435,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <section class="compartir">
     <div class="card-compartir">
       <!-- ICONO DE CÁMARA (line-md:image-loop) -->
-      <iconify-icon icon="line-md:image-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+      <img src="https://api.iconify.design/line-md:image-loop.svg?color=%23b5975a" alt="Cámara" class="icono-centrado">
       <h3>Comparte tus Fotos</h3>
       <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
       <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ubicacion" style="display:inline-block;">Compartir Fotos</a>
@@ -438,7 +451,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="regalos-grid">
       <!-- Efectivo -->
       <div class="regalo-card">
-        <iconify-icon icon="line-md:email" style="color: var(--blanco); font-size: 50px; margin-bottom: 20px;"></iconify-icon>
+        <img src="https://api.iconify.design/line-md:email.svg?color=%23ffffff" alt="Sobre" class="icono-centrado">
         <p>Efectivo en Divisas $<br>(Habrá un buzón)</p>
       </div>
       <!-- Pago Móvil -->
@@ -456,15 +469,15 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <!-- PÁGINA 9 Y 10: RECOMENDACIONES Y VESTIMENTA -->
   <section class="recomendaciones">
     
-    <!-- NUEVO ICONO CERO NIÑOS -->
-    <iconify-icon icon="mdi:account-off" style="color: var(--texto-suave); font-size: 50px; margin-bottom: 15px;"></iconify-icon>
+    <!-- ICONO CERO NIÑOS -->
+    <img src="https://api.iconify.design/mdi:account-off.svg?color=%23666666" alt="Cero niños" class="icono-centrado" style="width:50px; height:50px; margin-bottom:15px;">
     
     <div class="aviso">
       AUNQUE AMAMOS A SUS PEQUEÑOS, ESTE DÍA ESPECIAL ES SOLO PARA ADULTOS, LES PEDIMOS QUE NOS ACOMPAÑEN SIN NIÑOS.
     </div>
 
     <div class="vestimenta-card">
-      <iconify-icon icon="line-md:account" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+      <img src="https://api.iconify.design/line-md:account.svg?color=%23b5975a" alt="Vestimenta" class="icono-centrado">
       <h3>Código de Vestimenta</h3>
       <div class="tipo">Formal - Elegante</div>
       
@@ -500,7 +513,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
       </div>
       <button type="submit" class="btn-enviar">
-        <iconify-icon icon="line-md:send" style="font-size: 18px; margin: 0;"></iconify-icon>
+        <img src="https://api.iconify.design/line-md:send.svg?color=%23ffffff" alt="Enviar" class="icono-pequeno">
         Enviar
       </button>
       <div id="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--verde-oliva);"></div>
