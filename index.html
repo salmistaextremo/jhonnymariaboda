@@ -270,13 +270,15 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 <button id="music-btn">
   <iconify-icon icon="mdi:music" width="24" height="24" style="color: #fff;"></iconify-icon>
 </button>
-<audio id="bg-music" loop autoplay>
-  <source src="https://github.com/salmistaextremo/jhonnymariaboda/blob/36afbf4a02a6b9b9e7b8d344a378a0ed24ad726e/porsiempre.mp3" type="audio/mpeg">
+
+<!-- REPRODUCTOR DE MÚSICA -->
+<audio id="bg-music" loop>
+  <source src="porsiempre.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PORTADA DE ENTRADA -->
 <div id="portada">
-  <button class="btn-abrir" onclick="document.getElementById('portada').classList.add('abrir'); setTimeout(()=>document.getElementById('portada').style.display='none', 1500)">Abrir Invitación</button>
+  <button class="btn-abrir" onclick="abrirInvitacion()">Abrir Invitación</button>
 </div>
 
 <main>
@@ -359,7 +361,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="eventos-grid">
       <!-- Ceremonia -->
       <div class="evento-card">
-        <!-- Icono Iglesia -->
         <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
         <h3>Ceremonia Religiosa</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
@@ -368,7 +369,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       </div>
       <!-- Recepción -->
       <div class="evento-card">
-        <!-- Icono Recepción (Brindis) -->
         <iconify-icon icon="mdi:glass-cocktail" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
         <h3>Recepción Social</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
@@ -449,10 +449,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
   <!-- PÁGINA 9 Y 10: RECOMENDACIONES Y VESTIMENTA -->
   <section class="recomendaciones">
-    
-    <!-- ICONO CERO NIÑOS -->
     <iconify-icon icon="mdi:account-off" width="50" height="50" style="color: var(--texto-suave); margin-bottom: 15px;"></iconify-icon>
-    
     <div class="aviso">
       AUNQUE AMAMOS A SUS PEQUEÑOS, ESTE DÍA ESPECIAL ES SOLO PARA ADULTOS, LES PEDIMOS QUE NOS ACOMPAÑEN SIN NIÑOS.
     </div>
@@ -524,9 +521,25 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 // ==========================================
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
 const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO POR EL NÚMERO REAL
+const audio = document.getElementById('bg-music');
 
 // ==========================================
-// 2. LECTURA DE URL (Nombre del invitado)
+// 2. FUNCIÓN PARA ABRIR LA INVITACIÓN Y MÚSICA
+// ==========================================
+function abrirInvitacion() {
+  document.getElementById('portada').classList.add('abrir');
+  setTimeout(() => {
+    document.getElementById('portada').style.display = 'none';
+  }, 1500);
+  
+  // Intentar reproducir la música (esto engaña al navegador y permite el audio en móviles)
+  audio.play().catch(e => {
+    console.log("Audio bloqueado por el navegador:", e);
+  });
+}
+
+// ==========================================
+// 3. LECTURA DE URL (Nombre del invitado)
 // ==========================================
 const params = new URLSearchParams(window.location.search);
 const nombreInvitado = params.get('nombre') || 'Invitado Especial';
@@ -537,7 +550,7 @@ document.getElementById('pases').textContent = pases;
 document.getElementById('nombre').value = nombreInvitado !== 'Invitado Especial' ? nombreInvitado : '';
 
 // ==========================================
-// 3. CUENTA REGRESIVA
+// 4. CUENTA REGRESIVA
 // ==========================================
 function actualizarConteo() {
   const ahora = new Date().getTime();
@@ -565,11 +578,9 @@ setInterval(actualizarConteo, 1000);
 actualizarConteo();
 
 // ==========================================
-// 4. MÚSICA DE FONDO
+// 5. BOTÓN FLOTANTE DE MÚSICA (Play/Pause)
 // ==========================================
 const musicBtn = document.getElementById('music-btn');
-const audio = document.getElementById('bg-music');
-
 musicBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
@@ -579,7 +590,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 5. MODAL DEL MAPA
+// 6. MODAL DEL MAPA
 // ==========================================
 function openMap(url) {
   document.getElementById('map-iframe').src = url;
@@ -591,7 +602,7 @@ function closeMap() {
 }
 
 // ==========================================
-// 6. ENVÍO DE RSVP POR WHATSAPP
+// 7. ENVÍO DE RSVP POR WHATSAPP
 // ==========================================
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   e.preventDefault();
