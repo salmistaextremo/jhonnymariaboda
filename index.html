@@ -35,13 +35,10 @@ body{
 }
 img{max-width: 100%; display: block}
 
-/* Animación para iconos que no tienen loop nativo */
-.animated-icon {
-  animation: pulse-icon 2s infinite ease-in-out;
-}
-@keyframes pulse-icon {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+/* Forzar centrado de los iconos */
+iconify-icon {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Tipografías */
@@ -115,7 +112,7 @@ img{max-width: 100%; display: block}
 .conteo-item .num{font-size: 3rem; color: var(--verde-oliva); line-height: 1}
 .conteo-item .lbl{font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-top: 5px}
 
-/* ==================== OLAS SVG (CORRECCIÓN) ==================== */
+/* ==================== OLAS SVG ==================== */
 .wave-container {
   width: 100%;
   line-height: 0;
@@ -275,9 +272,8 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
 <!-- BOTÓN MÚSICA -->
 <button id="music-btn">
-  <iconify-icon icon="line-md:music-loop" style="font-size: 24px;"></iconify-icon>
+  <iconify-icon icon="line-md:music-loop" style="font-size: 24px; margin: 0;"></iconify-icon>
 </button>
-<!-- REEMPLAZA EL SRC POR TU CANCIÓN (MP3) -->
 <audio id="bg-music" loop autoplay>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
@@ -322,7 +318,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     </div>
   </section>
 
-  <!-- OLA SVG SUPERIOR (Corregida) -->
+  <!-- OLA SVG SUPERIOR -->
   <div class="wave-container" style="background-color: var(--fondo-marmol);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
@@ -332,7 +328,6 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <!-- PÁGINA 3: INVITADO Y PADRES -->
   <section class="seccion-verde invitado">
     <h3>QUERIDO (A)</h3>
-    <!-- Nombre dinámico por URL -->
     <div class="nombre-inv" id="nombre-invitado">Invitado Especial</div>
     <p class="pases">
       Hemos Reservado<br>
@@ -342,7 +337,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     </p>
   </section>
 
-  <!-- OLA SVG INFERIOR (Corregida) -->
+  <!-- OLA SVG INFERIOR -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
@@ -368,7 +363,8 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="eventos-grid">
       <!-- Ceremonia -->
       <div class="evento-card">
-        <iconify-icon icon="line-md:church" class="animated-icon" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
+        <!-- ICONO DE IGLESIA CORREGIDO (mdi:church) -->
+        <iconify-icon icon="mdi:church" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Ceremonia Religiosa</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
@@ -376,6 +372,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       </div>
       <!-- Recepción -->
       <div class="evento-card">
+        <!-- ICONO DE RECEPCIÓN (line-md:confetti-loop) -->
         <iconify-icon icon="line-md:confetti-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Recepción Social</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
@@ -400,7 +397,8 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         <div class="nombre">Entrada de<br>la Novia</div>
       </div>
       <div class="crono-item">
-        <iconify-icon icon="line-md:fork-knife-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
+        <!-- ICONO DE CENA CORREGIDO (line-md:coffee-loop) -->
+        <iconify-icon icon="line-md:coffee-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
         <div class="hora">8:00 pm</div>
         <div class="nombre">Cena</div>
       </div>
@@ -423,6 +421,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <!-- PÁGINA 7: COMPARTIR FOTOS -->
   <section class="compartir">
     <div class="card-compartir">
+      <!-- ICONO DE CÁMARA (line-md:image-loop) -->
       <iconify-icon icon="line-md:image-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
       <h3>Comparte tus Fotos</h3>
       <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
@@ -456,6 +455,10 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
   <!-- PÁGINA 9 Y 10: RECOMENDACIONES Y VESTIMENTA -->
   <section class="recomendaciones">
+    
+    <!-- NUEVO ICONO CERO NIÑOS -->
+    <iconify-icon icon="mdi:account-off" style="color: var(--texto-suave); font-size: 50px; margin-bottom: 15px;"></iconify-icon>
+    
     <div class="aviso">
       AUNQUE AMAMOS A SUS PEQUEÑOS, ESTE DÍA ESPECIAL ES SOLO PARA ADULTOS, LES PEDIMOS QUE NOS ACOMPAÑEN SIN NIÑOS.
     </div>
@@ -497,7 +500,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
       </div>
       <button type="submit" class="btn-enviar">
-        <iconify-icon icon="line-md:send" style="font-size: 18px;"></iconify-icon>
+        <iconify-icon icon="line-md:send" style="font-size: 18px; margin: 0;"></iconify-icon>
         Enviar
       </button>
       <div id="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--verde-oliva);"></div>
@@ -513,7 +516,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
 </main>
 
-<!-- MODAL MAPA (Oculto por defecto) -->
+<!-- MODAL MAPA -->
 <div id="map-modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeMap()">&times;</span>
@@ -526,9 +529,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 // 1. CONFIGURACIÓN
 // ==========================================
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
-
-// ⚠️ COLOCA AQUÍ EL NÚMERO DE WHATSAPP PARA EL RSVP (Sin +, ni espacios)
-const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO
+const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO POR EL NÚMERO REAL
 
 // ==========================================
 // 2. LECTURA DE URL (Nombre del invitado)
@@ -584,7 +585,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 5. MODAL DEL MAPA (Ubicación)
+// 5. MODAL DEL MAPA
 // ==========================================
 function openMap(url) {
   document.getElementById('map-iframe').src = url;
@@ -592,7 +593,6 @@ function openMap(url) {
 }
 function closeMap() {
   document.getElementById('map-modal').classList.remove('activo');
-  // Limpiar el iframe para detener la carga
   setTimeout(() => { document.getElementById('map-iframe').src = ""; }, 300);
 }
 
