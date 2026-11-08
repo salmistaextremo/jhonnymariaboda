@@ -10,6 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
+<!-- Iconify para iconos animados -->
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
 <style>
 /* ==================== VARIABLES ==================== */
 :root{
@@ -25,7 +28,6 @@
 html{scroll-behavior: smooth}
 body{
   background-color: var(--fondo-marmol);
-  /* Textura de mármol sutil de fondo */
   background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
   color: var(--texto);
   font-family: 'Cormorant Garamond', serif;
@@ -58,13 +60,13 @@ img{max-width: 100%; display: block}
 /* ==================== BOTÓN MÚSICA ==================== */
 #music-btn{
   position: fixed; bottom: 20px; right: 20px; z-index: 100;
-  width: 45px; height: 45px; border-radius: 50%;
-  background: rgba(90, 107, 86, 0.8); color: #fff; border: none;
-  font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: rgba(90, 107, 86, 0.85); color: #fff; border: none;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
   backdrop-filter: blur(5px); transition: transform 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-#music-btn.playing{animation: spin 4s linear infinite}
-@keyframes spin{100%{transform: rotate(360deg)}}
+#music-btn:hover{transform: scale(1.1)}
 
 /* ==================== HERO (PÁGINA 1) ==================== */
 .hero{
@@ -138,7 +140,6 @@ img{max-width: 100%; display: block}
   background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
   padding: 40px 20px; display: flex; flex-direction: column; align-items: center;
 }
-.evento-card svg{width: 60px; height: 60px; fill: none; stroke: var(--dorado); stroke-width: 1; margin-bottom: 20px}
 .evento-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
 .evento-card .lugar{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 20px; text-transform: uppercase}
 .evento-card .hora{font-size: 2rem; font-style: italic; margin-bottom: 25px}
@@ -154,7 +155,6 @@ img{max-width: 100%; display: block}
 .cronograma h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
 .crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1000px; margin: 0 auto}
 .crono-item{flex: 1; min-width: 120px; text-align: center}
-.crono-item svg{width: 40px; height: 40px; fill: none; stroke: var(--dorado); stroke-width: 1; margin: 0 auto 15px}
 .crono-item .hora{font-size: 1.5rem; font-style: italic; margin-bottom: 5px}
 .crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
 
@@ -170,7 +170,6 @@ img{max-width: 100%; display: block}
   background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
   padding: 50px 30px; max-width: 600px; margin: 0 auto;
 }
-.card-compartir svg{width: 60px; height: 60px; stroke: var(--dorado); fill: none; stroke-width: 1; margin: 0 auto 20px}
 .card-compartir h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px}
 .card-compartir p{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--texto-suave); margin-bottom: 30px; text-transform: uppercase}
 
@@ -184,7 +183,6 @@ img{max-width: 100%; display: block}
   padding: 30px 20px; flex: 1; min-width: 250px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-.regalo-card svg{width: 50px; height: 50px; stroke: #fff; fill: none; stroke-width: 1; margin-bottom: 20px}
 .regalo-card img.qr{width: 150px; height: 150px; margin-bottom: 20px; border-radius: 10px; background: #fff; padding: 5px}
 .regalo-card p{font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6}
 
@@ -198,7 +196,6 @@ img{max-width: 100%; display: block}
   background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
   padding: 40px; max-width: 600px; margin: 0 auto 50px;
 }
-.vestimenta-card svg{width: 80px; height: 80px; stroke: var(--dorado); fill: none; stroke-width: 0.5; margin: 0 auto 15px}
 .vestimenta-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
 .vestimenta-card .tipo{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 30px}
 .paleta-colores{display: flex; justify-content: center; gap: 15px; margin-bottom: 20px}
@@ -247,7 +244,9 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 <body>
 
 <!-- BOTÓN MÚSICA -->
-<button id="music-btn" class="playing">♪</button>
+<button id="music-btn">
+  <iconify-icon icon="line-md:music-loop" style="font-size: 24px;"></iconify-icon>
+</button>
 <!-- REEMPLAZA EL SRC POR TU CANCIÓN (MP3) -->
 <audio id="bg-music" loop autoplay>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -330,7 +329,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="eventos-grid">
       <!-- Ceremonia -->
       <div class="evento-card">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 9v12h18V9l-9-7zm0 2.5l7 5.4V19H5V9.9l7-5.4zM12 5v2m-4 2v2m8-2v2m-8 5v5m8-5v5m-4-5v5"/></svg>
+        <iconify-icon icon="line-md:church" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Ceremonia Religiosa</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
@@ -338,7 +337,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
       </div>
       <!-- Recepción -->
       <div class="evento-card">
-        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <iconify-icon icon="line-md:confetti" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
         <h3>Recepción Social</h3>
         <div class="lugar">Restaurante<br>La Casa 1992</div>
         <div class="hora">5:00 pm</div>
@@ -352,17 +351,17 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <h2>Cronograma</h2>
     <div class="crono-grid">
       <div class="crono-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 9v12h18V9l-9-7z"/></svg>
+        <iconify-icon icon="line-md:confetti" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
         <div class="hora">5:00 pm</div>
         <div class="nombre">Recepción<br>Social</div>
       </div>
       <div class="crono-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 00-3 3v14a3 3 0 006 0V5a3 3 0 00-3-3z"/></svg>
+        <iconify-icon icon="line-md:heart-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
         <div class="hora">6:00 pm</div>
         <div class="nombre">Entrada de<br>la Novia</div>
       </div>
       <div class="crono-item">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 4h16v2H4zm0 4h16v2H4z"/></svg>
+        <iconify-icon icon="line-md:fork-knife-loop" style="color: var(--dorado); font-size: 40px; margin-bottom: 15px;"></iconify-icon>
         <div class="hora">8:00 pm</div>
         <div class="nombre">Cena</div>
       </div>
@@ -386,11 +385,10 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
   <!-- PÁGINA 7: COMPARTIR FOTOS -->
   <section class="compartir">
     <div class="card-compartir">
-      <svg viewBox="0 0 24 24"><path d="M21 19V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <iconify-icon icon="line-md:image-loop" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
       <h3>Comparte tus Fotos</h3>
       <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
-      <!-- Aquí puedes poner un enlace a Google Drive o Drive de Fotos -->
-            <!-- Enlace a la carpeta de Google Drive -->
+      <!-- Enlace a la carpeta de Google Drive -->
       <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ubicacion" style="display:inline-block;">Compartir Fotos</a>
     </div>
   </section>
@@ -404,13 +402,13 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     <div class="regalos-grid">
       <!-- Efectivo -->
       <div class="regalo-card">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v4H6zm10 0h2v4h-2z"/></svg>
+        <iconify-icon icon="line-md:email" style="color: var(--blanco); font-size: 50px; margin-bottom: 20px;"></iconify-icon>
         <p>Efectivo en Divisas $<br>(Habrá un buzón)</p>
       </div>
       <!-- Pago Móvil -->
       <div class="regalo-card">
         <!-- REEMPLAZA 'qr.jpg' con tu imagen de QR -->
-        <img src="qr.jpeg" alt="Pago Móvil Banesco" class="qr" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <img src="qr.jpg" alt="Pago Móvil Banesco" class="qr" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <p>
           Banesco<br>
           C.I: V-27695778<br>
@@ -427,7 +425,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
     </div>
 
     <div class="vestimenta-card">
-      <svg viewBox="0 0 24 24"><path d="M12 2C9.24 2 7 4.24 7 7v10c0 2.76 2.24 5 5 5s5-2.24 5-5V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3s-3-1.34-3-3V7c0-1.66 1.34-3 3-3z"/></svg>
+      <iconify-icon icon="line-md:account" style="color: var(--dorado); font-size: 60px; margin-bottom: 20px;"></iconify-icon>
       <h3>Código de Vestimenta</h3>
       <div class="tipo">Formal - Elegante</div>
       
@@ -463,7 +461,7 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
       </div>
       <button type="submit" class="btn-enviar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        <iconify-icon icon="line-md:send" style="font-size: 18px;"></iconify-icon>
         Enviar
       </button>
       <div id="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--verde-oliva);"></div>
@@ -537,10 +535,8 @@ const audio = document.getElementById('bg-music');
 musicBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
-    musicBtn.classList.add('playing');
   } else {
     audio.pause();
-    musicBtn.classList.remove('playing');
   }
 });
 
