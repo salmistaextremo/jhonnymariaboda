@@ -16,7 +16,7 @@
 <style>
 /* ==================== VARIABLES ==================== */
 :root{
-  --fondo-marmol: #f7f6f2;
+  --fondo-marmol: #fbfbf9; /* Gris más claro */
   --verde-oliva: #5a6b56;
   --verde-oscuro: #465440;
   --dorado: #b5975a;
@@ -53,7 +53,7 @@ img{max-width: 100%; display: block}
 /* Tipografías */
 .script{font-family: 'Great Vibes', cursive; color: var(--dorado)}
 
-/* ==================== PORTADA (MÚSICA Y ENTRADA) ==================== */
+/* ==================== PORTADA ==================== */
 #portada{
   position: fixed; inset: 0; z-index: 200;
   display: flex; align-items: center; justify-content: center;
@@ -147,9 +147,22 @@ img{max-width: 100%; display: block}
 }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
 
-/* ==================== ONDAS SVG ==================== */
-.wave-container { width: 100%; line-height: 0; margin-bottom: -1px; }
-.wave-container svg { width: 100%; height: 50px; display: block; }
+/* ==================== ONDAS SVG (AJUSTADAS) ==================== */
+.wave-container { 
+  width: 100%; 
+  line-height: 0; 
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.wave-container svg { 
+  width: 100%; 
+  height: 50px; 
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
 
 /* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
 .galeria { padding: 60px 20px; text-align: center; }
@@ -174,7 +187,7 @@ img{max-width: 100%; display: block}
 }
 .card-box h3 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px; }
 .card-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
-.qr-img { width: 180px; margin: 0 auto 20px; border-radius: 10px; border: 1px solid var(--gris-marmol); }
+.qr-img { width: 180px; margin: 0 auto 20px; border-radius: 10px; border: 1px solid #eee; }
 .datos-banco { background: var(--fondo-marmol); padding: 15px; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.8; color: var(--texto); width: 100%; }
 .paleta-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
 .color-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
@@ -184,13 +197,21 @@ img{max-width: 100%; display: block}
 .fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
 .fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 15px; }
 .fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.8; }
-.qr-galeria { max-width: 200px; margin: 0 auto 30px; padding: 10px; background: #fff; border-radius: 10px; }
 
-/* ==================== PÁGINA 10: RECOMENDACIONES ==================== */
+/* ==================== PÁGINA 10: RECOMENDACIONES (CENTRADAS) ==================== */
 .recomendaciones { padding: 80px 20px; }
 .recomendaciones h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); text-align: center; margin-bottom: 50px; }
 .grid-recomendaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
-.recomendacion-card { background: #fff; padding: 30px; border-radius: 15px; border-left: 4px solid var(--dorado); display: flex; flex-direction: column; align-items: flex-start; }
+.recomendacion-card { 
+  background: #fff; 
+  padding: 30px; 
+  border-radius: 15px; 
+  border-left: 4px solid var(--dorado); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; /* Centra el icono y el texto */
+  text-align: center;   /* Centra el texto */
+}
 .recomendacion-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde-oliva); font-weight: 600; }
 .recomendacion-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); line-height: 1.6; }
 
@@ -294,7 +315,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
     <cite class="reveal delay-2">Mateo 19:6</cite>
   </section>
 
-  <!-- OLA SVG -->
+  <!-- OLA SVG (Mantiene el color de fondo del body para evitar blancos) -->
   <div class="wave-container" style="background-color: var(--fondo-marmol);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
@@ -313,10 +334,10 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
     </div>
   </section>
 
-  <!-- OLA SVG -->
+  <!-- OLA SVG (Mantiene el color verde para evitar blancos) -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#fbfbf9" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
@@ -401,7 +422,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
       <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
       <h2>Fotografías</h2>
       <p>“Ayúdanos a guardar todos los momentos que captures durante nuestro matrimonio, subiendo tus fotos en esta sección”</p>
-      <img src="qr-galeria.jpg" alt="QR Galería" class="qr-galeria" onerror="this.src='https://via.placeholder.com/200?text=Sube+tu+QR'">
+      <!-- QR ELIMINADO SEGÚN TU SOLICITUD -->
       <div>
         <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" class="btn-ubicacion" style="background: var(--dorado); color: #fff;">Subir Mis Fotos</a>
       </div>
@@ -411,7 +432,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
   <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#fbfbf9" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
@@ -423,7 +444,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 10: RECOMENDACIONES ==================== -->
+  <!-- ==================== PÁGINA 10: RECOMENDACIONES (CENTRADAS) ==================== -->
   <section class="recomendaciones">
     <h2 class="reveal">Recomendaciones</h2>
     <div class="grid-recomendaciones">
@@ -511,7 +532,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
 // 1. CONFIGURACIÓN
 // ==========================================
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
-const WHATSAPP_NUMERO = '584243547882'; // <--- CAMBIAR ESTO POR EL NÚMERO REAL
+const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO POR EL NÚMERO REAL
 const audio = document.getElementById('bg-music');
 
 // ==========================================
@@ -629,7 +650,7 @@ document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   if (mensaje) texto += `💬 *Mensaje:* ${mensaje}\n`;
   texto += `\n_Enviado desde la invitación digital de Jhonny y María_`;
 
-  const url = `https://wa.me/${584243547882}?text=${encodeURIComponent(texto)}`;
+  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
   
   document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
