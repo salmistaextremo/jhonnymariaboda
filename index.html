@@ -14,14 +14,15 @@
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
-/* ==================== VARIABLES ==================== */
+/* ==================== VARIABLES (CONTRASTE MEJORADO) ==================== */
 :root{
-  --fondo-marmol: #fbfbf9; /* Gris más claro */
-  --verde-oliva: #5a6b56;
-  --verde-oscuro: #465440;
-  --dorado: #b5975a;
-  --texto: #333333;
-  --texto-suave: #666666;
+  --fondo-marmol: #f9f9f8; /* Gris más claro y limpio */
+  --verde-oliva: #4A5947;  /* Verde un poco más oscuro para contraste */
+  --verde-oscuro: #3A4637;
+  --dorado: #D4AF37;       /* Dorado más brillante y metálico */
+  --dorado-claro: #E8D099; /* Dorado claro para textos sobre verde */
+  --texto: #2b2b2b;
+  --texto-suave: #555555;
   --blanco: #ffffff;
 }
 *{margin: 0; padding: 0; box-sizing: border-box}
@@ -72,7 +73,7 @@ img{max-width: 100%; display: block}
 #music-btn{
   position: fixed; bottom: 20px; right: 20px; z-index: 100;
   width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(90, 107, 86, 0.85); color: #fff; border: none;
+  background: rgba(74, 89, 71, 0.85); color: #fff; border: none;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -136,7 +137,7 @@ img{max-width: 100%; display: block}
 
 /* ==================== PÁGINA 4: CEREMONIA ==================== */
 .ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
-.ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 20px; }
+.ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 20px; }
 .ceremonia .lugar { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
 .ceremonia .hora { font-size: 2.5rem; font-style: italic; margin-bottom: 30px; color: #fff; }
 .btn-ubicacion{
@@ -147,21 +148,22 @@ img{max-width: 100%; display: block}
 }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
 
-/* ==================== ONDAS SVG (AJUSTADAS) ==================== */
+/* ==================== ONDAS SVG (SIN ESPACIOS EN BLANCO) ==================== */
 .wave-container { 
   width: 100%; 
   line-height: 0; 
+  font-size: 0;
   display: block;
   margin: 0;
   padding: 0;
 }
 .wave-container svg { 
   width: 100%; 
-  height: 50px; 
+  height: 55px; 
   display: block;
   margin: 0;
   padding: 0;
-  vertical-align: middle;
+  transform: translateY(1px); /* Soluciona la línea blanca de renderizado */
 }
 
 /* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
@@ -195,31 +197,53 @@ img{max-width: 100%; display: block}
 
 /* ==================== PÁGINA 8: FOTOGRAFÍAS ==================== */
 .fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
-.fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 15px; }
+.fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 15px; }
 .fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.8; }
 
-/* ==================== PÁGINA 10: RECOMENDACIONES (CENTRADAS) ==================== */
+/* ==================== PÁGINA 10: RECOMENDACIONES ==================== */
 .recomendaciones { padding: 80px 20px; }
 .recomendaciones h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); text-align: center; margin-bottom: 50px; }
 .grid-recomendaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
 .recomendacion-card { 
-  background: #fff; 
-  padding: 30px; 
-  border-radius: 15px; 
-  border-left: 4px solid var(--dorado); 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; /* Centra el icono y el texto */
-  text-align: center;   /* Centra el texto */
+  background: #fff; padding: 30px; border-radius: 15px; border-left: 4px solid var(--dorado); 
+  display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .recomendacion-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde-oliva); font-weight: 600; }
 .recomendacion-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); line-height: 1.6; }
 
+/* ==================== DIVISORES DECORATIVOS ==================== */
+.divisor-decorativo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 250px;
+}
+.divisor-decorativo::before,
+.divisor-decorativo::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--dorado);
+  opacity: 0.5;
+}
+.divisor-decorativo span {
+  padding: 0 15px;
+  color: var(--dorado);
+  font-size: 1.2rem;
+}
+/* Variante para fondos oscuros */
+.divisor-decorativo.dark::before,
+.divisor-decorativo.dark::after { background: var(--dorado-claro); opacity: 0.6; }
+.divisor-decorativo.dark span { color: var(--dorado-claro); }
+
 /* ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== */
 .invitado-rsvp { padding: 60px 20px 80px; text-align: center; }
-.invitado-rsvp h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 10px; line-height: 1; }
-.invitado-rsvp .frase { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--texto-suave); margin-bottom: 30px; }
-.nombre-invitado { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--verde-oliva); margin-bottom: 40px; }
+.invitado-rsvp h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 15px; line-height: 1; }
+.invitado-rsvp .frase { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--texto-suave); margin-bottom: 20px; }
+.nombre-invitado { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--verde-oliva); margin-bottom: 20px; }
+
 #rsvp-form { max-width: 500px; margin: 0 auto; text-align: left; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 8px; }
@@ -229,10 +253,11 @@ img{max-width: 100%; display: block}
 .btn-enviar:hover { background: var(--verde-oscuro); }
 
 /* ==================== PÁGINA 13: FOOTER ==================== */
-footer { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
-footer blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; max-width: 700px; margin: 0 auto 30px; line-height: 1.7; opacity: 0.9; }
+footer { background: var(--verde-oliva); color: #fff; text-align: center; padding: 80px 20px; }
+footer blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; max-width: 700px; margin: 0 auto; line-height: 1.7; opacity: 0.95; }
+footer cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado-claro); font-style: normal; display: block; margin-top: 15px; }
 footer .te-esperamos { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
-footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); }
+footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--dorado-claro); }
 
 /* ==================== MODAL MAPA ==================== */
 .modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; }
@@ -300,7 +325,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
       </div>
     </div>
 
-    <!-- Enlace a Google Calendar -->
     <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Jhonny+y+Mar%C3%ADa&dates=20261130T170000/20261130T230000&details=¡Acompáñanos+a+celebrar+nuestra+boda!&location=Restaurante+La+Casa+1992" target="_blank" class="btn-calendario reveal delay-2">
       <iconify-icon icon="mdi:calendar-plus" width="20"></iconify-icon> Agendar en mi calendario
     </a>
@@ -315,29 +339,29 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
     <cite class="reveal delay-2">Mateo 19:6</cite>
   </section>
 
-  <!-- OLA SVG (Mantiene el color de fondo del body para evitar blancos) -->
+  <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--fondo-marmol);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
   <!-- ==================== PÁGINA 4: CEREMONIA ==================== -->
   <section class="ceremonia">
     <div class="reveal">
-      <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado); margin: 0 auto 20px;"></iconify-icon>
+      <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado-claro); margin: 0 auto 20px;"></iconify-icon>
       <h2>Ceremonia</h2>
       <div class="lugar">Restaurante La Casa 1992</div>
-      <p style="font-family:'Montserrat'; font-size: 0.8rem; margin-bottom:20px;">(Al frente de la cancha de Futbolmania)</p>
+      <p style="font-family:'Montserrat'; font-size: 0.8rem; margin-bottom:20px; opacity:0.9;">(Al frente de la cancha de Futbolmania)</p>
       <div class="hora">5:00 pm</div>
       <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación GPS</button>
     </div>
   </section>
 
-  <!-- OLA SVG (Mantiene el color verde para evitar blancos) -->
+  <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#fbfbf9" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
@@ -412,17 +436,16 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
   <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--fondo-marmol);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
   <!-- ==================== PÁGINA 8: FOTOGRAFÍAS ==================== -->
   <section class="fotos-invitados">
     <div class="reveal">
-      <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+      <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado-claro); margin-bottom: 15px;"></iconify-icon>
       <h2>Fotografías</h2>
       <p>“Ayúdanos a guardar todos los momentos que captures durante nuestro matrimonio, subiendo tus fotos en esta sección”</p>
-      <!-- QR ELIMINADO SEGÚN TU SOLICITUD -->
       <div>
         <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" class="btn-ubicacion" style="background: var(--dorado); color: #fff;">Subir Mis Fotos</a>
       </div>
@@ -432,7 +455,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
   <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#fbfbf9" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+      <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
@@ -444,7 +467,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 10: RECOMENDACIONES (CENTRADAS) ==================== -->
+  <!-- ==================== PÁGINA 10: RECOMENDACIONES ==================== -->
   <section class="recomendaciones">
     <h2 class="reveal">Recomendaciones</h2>
     <div class="grid-recomendaciones">
@@ -475,15 +498,18 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
   <section class="invitado-rsvp" id="rsvp">
     <div class="reveal">
       <p class="frase">“Nuestra felicidad no estaría completa sin ti en nuestra celebración”</p>
+      
+      <div class="divisor-decorativo"><span>✦</span></div>
+      
       <div class="nombre-invitado" id="nombre-invitado">Invitado Especial</div>
-    </div>
+      
+      <div class="divisor-decorativo"><span>✦</span></div>
 
-    <div class="reveal delay-1">
       <h2>Confirma tu Asistencia</h2>
-      <p class="frase" style="font-size: 1.1rem; margin-bottom: 40px;">Estamos cuidando cada detalle para que pases un día inolvidable, ayúdanos confirmando tu asistencia lo antes posible.</p>
+      <p class="frase" style="font-size: 1.15rem; margin-bottom: 40px;">Estamos cuidando cada detalle para que pases un día inolvidable, ayúdanos confirmando tu asistencia lo antes posible.</p>
     </div>
 
-    <form id="rsvp-form" class="reveal delay-2">
+    <form id="rsvp-form" class="reveal delay-1">
       <div class="form-group">
         <label>Nombre</label>
         <input type="text" id="nombre" required>
@@ -510,11 +536,14 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--d
   <!-- ==================== PÁGINA 13: FOOTER ==================== -->
   <footer>
     <blockquote class="reveal">
-      "Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios. El que no ama, no ha conocido a Dios; porque Dios es amor" <br>
-      <span style="font-family:'Montserrat'; font-size:0.8rem; letter-spacing:0.1em; margin-top:15px; display:block; color:var(--dorado);">1 Juan 4:7-8</span>
+      "Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios. El que no ama, no ha conocido a Dios; porque Dios es amor"
+      <cite>1 Juan 4:7-8</cite>
     </blockquote>
-    <div class="te-esperamos reveal delay-1">¡Te esperamos!</div>
-    <h2 class="reveal delay-2">Jhonny y María</h2>
+    
+    <div class="divisor-decorativo dark reveal delay-1"><span>✦</span></div>
+    
+    <div class="te-esperamos reveal delay-2">¡Te esperamos!</div>
+    <h2 class="reveal delay-3">Jhonny y María</h2>
   </footer>
 
 </main>
@@ -551,7 +580,7 @@ function abrirInvitacion() {
 }
 
 // ==========================================
-// 3. ANIMACIÓN ZOOM AL SCROLL (Intersection Observer)
+// 3. ANIMACIÓN ZOOM AL SCROLL
 // ==========================================
 function iniciarAnimacionesScroll() {
   const observer = new IntersectionObserver((entries) => {
@@ -654,13 +683,6 @@ document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   window.open(url, '_blank');
   
   document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
-});
-
-// Iniciar animaciones si se recarga la página
-window.addEventListener('load', () => {
-    if (document.getElementById('portada').style.display === 'none') {
-        iniciarAnimacionesScroll();
-    }
 });
 </script>
 
