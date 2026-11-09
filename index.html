@@ -39,61 +39,153 @@ img{max-width: 100%; display: block}
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 
-/* ==================== LA SOLUCIÓN DEFINITIVA A LAS OLAS ==================== */
-/* Clase para cuando la sección actual es GRIS y la siguiente es VERDE */
-.wave-to-green {
-  position: relative;
-  padding-bottom: 70px !important; /* Espacio para la ola */
-  z-index: 2;
+/* ==================== PORTADA CON SOBRE 3D ==================== */
+#portada {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--fondo-marmol);
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  transition: opacity 1.5s ease, visibility 1.5s;
+  perspective: 1000px;
 }
-.wave-to-green::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; /* Se superpone 1px a la siguiente sección */
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%234A5947' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  pointer-events: none;
+#portada.abrir { opacity: 0; visibility: hidden; }
+
+.envelope-wrapper {
+  position: relative;
+  width: 340px;
+  height: 240px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+.envelope-wrapper:hover { transform: translateY(-10px); }
+
+/* Fondo del sobre */
+.envelope-back {
+  position: absolute; inset: 0;
+  background-color: #fcfcfc;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  z-index: 1;
 }
 
-/* Clase para cuando la sección actual es VERDE y la siguiente es GRIS */
-.wave-to-light {
-  position: relative;
-  padding-bottom: 70px !important;
-  z-index: 2;
-}
-.wave-to-light::after {
-  content: '';
+/* Carta interior (asoma al abrir) */
+.letter {
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23f9f9f8' d='M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  pointer-events: none;
+  top: 10px; left: 15px; right: 15px; bottom: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  padding: 20px;
+}
+.letter .script { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--dorado); margin-bottom: 10px; }
+.letter p { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
+
+/* Solapas del sobre */
+.envelope-flap {
+  position: absolute; width: 0; height: 0;
+  border-style: solid;
+  z-index: 3;
+}
+/* Solapa inferior */
+.flap-bottom {
+  bottom: 0; left: 0; right: 0; height: 0;
+  border-left: 170px solid transparent;
+  border-right: 170px solid transparent;
+  border-bottom: 120px solid #f0f0f0;
+  z-index: 4;
+  border-radius: 0 0 8px 8px;
+}
+/* Solapas laterales (decorativas) */
+.flap-left {
+  top: 0; left: 0; bottom: 0;
+  border-top: 120px solid transparent;
+  border-bottom: 120px solid transparent;
+  border-left: 170px solid #f8f8f8;
+  z-index: 3;
+  border-radius: 8px 0 0 8px;
+}
+.flap-right {
+  top: 0; right: 0; bottom: 0;
+  border-top: 120px solid transparent;
+  border-bottom: 120px solid transparent;
+  border-right: 170px solid #f8f8f8;
+  z-index: 3;
+  border-radius: 0 8px 8px 0;
 }
 
-/* ==================== PORTADA Y BOTONES ==================== */
-#portada{ position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background-color: var(--fondo-marmol); background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); transition: opacity 1.5s ease, transform 1.5s ease; }
-#portada.abrir{opacity: 0; transform: scale(1.05); pointer-events: none}
-.btn-abrir{ padding: 15px 40px; background: var(--verde-oliva); color: #fff; border: none; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s; }
-.btn-abrir:hover{background: var(--verde-oscuro)}
-#music-btn{ position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(74, 89, 71, 0.9); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+/* Solapa superior (la que se abre) */
+.flap-top {
+  top: 0; left: 0; right: 0; height: 0;
+  border-left: 170px solid transparent;
+  border-right: 170px solid transparent;
+  border-top: 130px solid #ffffff;
+  z-index: 5;
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.1s 0.4s;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Sello de Cera */
+.wax-seal {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85px; height: 85px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fcf6ba, #b38728 60%, #96763f);
+  box-shadow: 
+    0 6px 15px rgba(0,0,0,0.3), 
+    inset 0 0 10px rgba(255,255,255,0.4),
+    inset 0 -5px 15px rgba(0,0,0,0.4);
+  z-index: 6;
+  display: flex; align-items: center; justify-content: center;
+  color: #3d2f12;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.wax-seal::before {
+  content: ''; position: absolute; inset: 6px;
+  border-radius: 50%; border: 1px solid rgba(61, 47, 18, 0.3);
+}
+.envelope-wrapper:hover .wax-seal {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* ==================== ANIMACIÓN DE APERTURA ==================== */
+#portada.abrir .flap-top {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+#portada.abrir .letter {
+  transform: translateY(-120px);
+  z-index: 6;
+}
+#portada.abrir .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5) rotate(15deg);
+}
+
+/* ==================== ESTILOS RESTO DE LA PÁGINA ==================== */
+#music-btn{ position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(74, 89, 71, 0.9); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; }
+#music-btn.visible { opacity: 1; pointer-events: auto; }
 #music-btn:hover{transform: scale(1.1)}
 
-/* ==================== HERO ==================== */
 .hero{ min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 40px; gap: 40px; }
 .hero-foto{ width: 100%; height: 80vh; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .hero-texto{text-align: center; padding: 20px}
 .hero-texto h1{ font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 8vw, 7rem); color: var(--dorado); line-height: 0.9; margin-bottom: 20px; }
 .hero-texto h1 span{font-size: 0.4em; display: block; margin: 10px 0}
 
-/* ==================== FECHA Y CONTEO ==================== */
 .fecha-seccion{ text-align: center; padding: 80px 20px; }
 .fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
 .fecha-seccion .numero{font-size: 6rem; line-height: 1; color: var(--verde-oliva); margin: 10px 0; font-family: 'Cormorant Garamond', serif}
@@ -107,7 +199,12 @@ img{max-width: 100%; display: block}
 .btn-calendario { display: inline-flex; align-items: center; gap: 10px; background: var(--blanco); border: 1px solid var(--verde-oliva); color: var(--verde-oliva); padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
 .btn-calendario:hover { background: var(--verde-oliva); color: var(--blanco); }
 
-/* ==================== CEREMONIA ==================== */
+/* OLAS SIN ESPACIOS */
+.wave-to-green { position: relative; padding-bottom: 70px !important; z-index: 2; }
+.wave-to-green::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%234A5947' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E"); background-size: 100% 100%; background-repeat: no-repeat; pointer-events: none; }
+.wave-to-light { position: relative; padding-bottom: 70px !important; z-index: 2; }
+.wave-to-light::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23f9f9f8' d='M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E"); background-size: 100% 100%; background-repeat: no-repeat; pointer-events: none; }
+
 .ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 60px 20px; }
 .ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 20px; }
 .ceremonia .lugar { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
@@ -115,19 +212,16 @@ img{max-width: 100%; display: block}
 .btn-ubicacion{ background: var(--blanco); color: var(--verde-oliva); text-decoration: none; padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s; cursor: pointer; border: none; display: inline-block; margin-bottom: 20px; }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
 
-/* ==================== FOTO Y VERSÍCULO ==================== */
 .foto-versiculo { padding: 60px 20px; text-align: center; background-color: var(--fondo-marmol); }
 .foto-versiculo .foto-full { width: 100%; max-width: 500px; margin: 0 auto 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .foto-versiculo blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--texto); max-width: 700px; margin: 0 auto 15px; line-height: 1.5; }
 .foto-versiculo cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal; display: block; }
 
-/* ==================== GALERÍAS ==================== */
 .galeria { padding: 60px 20px; text-align: center; }
 .galeria-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto; }
 .galeria-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
 .galeria img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; }
 
-/* ==================== ITINERARIO ==================== */
 .itinerario { padding: 80px 20px; text-align: center; }
 .itinerario h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
 .crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 800px; margin: 0 auto}
@@ -135,7 +229,6 @@ img{max-width: 100%; display: block}
 .crono-item .hora{font-size: 1.8rem; font-style: italic; margin-bottom: 5px; color: var(--verde-oliva); font-weight: 500;}
 .crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
 
-/* ==================== REGALOS Y VESTIMENTA ==================== */
 .regalos-vestimenta { padding: 60px 20px; background-color: var(--fondo-marmol); }
 .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
 .card-box { background: #fff; border: 1px solid var(--dorado); border-radius: 20px; padding: 40px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -147,12 +240,10 @@ img{max-width: 100%; display: block}
 .color-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
 .nota-reserva { font-size: 0.9rem; font-weight: 500; color: #b23a3a; background: #fdf0f0; padding: 10px; border-radius: 8px; margin-top: 15px; }
 
-/* ==================== FOTOGRAFÍAS ==================== */
 .fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
 .fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 15px; }
 .fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.8; }
 
-/* ==================== RECOMENDACIONES ==================== */
 .recomendaciones { padding: 80px 20px; }
 .recomendaciones h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); text-align: center; margin-bottom: 50px; }
 .grid-recomendaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
@@ -160,14 +251,12 @@ img{max-width: 100%; display: block}
 .recomendacion-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde-oliva); font-weight: 600; }
 .recomendacion-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); line-height: 1.6; }
 
-/* ==================== DIVISORES ==================== */
 .divisor-decorativo { display: flex; align-items: center; justify-content: center; margin: 30px auto; width: 100%; max-width: 250px; }
 .divisor-decorativo::before, .divisor-decorativo::after { content: ''; flex: 1; height: 1px; background: var(--dorado); opacity: 0.6; }
 .divisor-decorativo span { padding: 0 15px; color: var(--dorado); font-size: 1.2rem; }
 .divisor-decorativo.dark::before, .divisor-decorativo.dark::after { background: var(--dorado-claro); opacity: 0.8; }
 .divisor-decorativo.dark span { color: var(--dorado-claro); }
 
-/* ==================== INVITADO Y RSVP ==================== */
 .invitado-rsvp { padding: 60px 20px 80px; text-align: center; }
 .invitado-rsvp h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 15px; line-height: 1; }
 .invitado-rsvp .frase { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--texto-suave); margin-bottom: 20px; }
@@ -180,14 +269,12 @@ img{max-width: 100%; display: block}
 .btn-enviar { width: 100%; background: var(--verde-oliva); color: #fff; border: none; border-radius: 8px; padding: 15px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.3s; margin-top: 10px; }
 .btn-enviar:hover { background: var(--verde-oscuro); }
 
-/* ==================== FOOTER ==================== */
 footer { background: var(--verde-oliva); color: #fff; text-align: center; padding: 80px 20px; }
 footer blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; max-width: 700px; margin: 0 auto; line-height: 1.7; opacity: 0.95; }
 footer cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado-claro); font-style: normal; display: block; margin-top: 15px; }
 footer .te-esperamos { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
 footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--dorado-claro); }
 
-/* ==================== MODAL ==================== */
 .modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; }
 .modal.activo { display: flex; }
 .modal-content { background-color: #fff; padding: 20px; border-radius: 15px; width: 100%; max-width: 600px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
@@ -203,21 +290,46 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
   .conteo-item .num { font-size: 2.5rem; }
   #rsvp-form { padding: 30px 20px; }
   footer h2 { font-size: 3rem; }
+  .envelope-wrapper { width: 300px; height: 210px; }
+  .flap-bottom { border-left: 150px solid transparent; border-right: 150px solid transparent; border-bottom: 110px solid #f0f0f0; }
+  .flap-left { border-top: 105px solid transparent; border-bottom: 105px solid transparent; border-left: 150px solid #f8f8f8; }
+  .flap-right { border-top: 105px solid transparent; border-bottom: 105px solid transparent; border-right: 150px solid #f8f8f8; }
+  .flap-top { border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 115px solid #ffffff; }
 }
 </style>
 </head>
 <body>
 
+<!-- BOTÓN MÚSICA -->
 <button id="music-btn">
   <iconify-icon icon="mdi:music" width="24" height="24" style="color: #fff;"></iconify-icon>
 </button>
 
+<!-- REPRODUCTOR DE MÚSICA -->
 <audio id="bg-music" loop>
   <source src="porsiempre.mp3" type="audio/mpeg">
 </audio>
 
+<!-- PORTADA CON SOBRE ANIMADO -->
 <div id="portada">
-  <button class="btn-abrir" onclick="abrirInvitacion()">Abrir Invitación</button>
+  <div class="envelope-wrapper" onclick="abrirInvitacion()">
+    <div class="envelope-back"></div>
+    
+    <!-- La carta que sale -->
+    <div class="letter">
+      <div class="script">J & M</div>
+      <p>Nuestra Boda</p>
+    </div>
+    
+    <!-- Solapas -->
+    <div class="envelope-flap flap-bottom"></div>
+    <div class="envelope-flap flap-left"></div>
+    <div class="envelope-flap flap-right"></div>
+    <div class="envelope-flap flap-top"></div>
+    
+    <!-- Sello de cera -->
+    <div class="wax-seal">Abrir</div>
+  </div>
 </div>
 
 <main>
@@ -230,7 +342,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- FECHA Y CONTEO (Aplica ola verde) -->
+  <!-- FECHA Y CONTEO -->
   <section class="fecha-seccion wave-to-green">
     <div class="reveal">
       <div class="dia-semana">DOMINGO</div>
@@ -254,7 +366,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </a>
   </section>
 
-  <!-- CEREMONIA (Aplica ola gris) -->
+  <!-- CEREMONIA -->
   <section class="ceremonia wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado-claro); margin: 0 auto 20px;"></iconify-icon>
@@ -306,7 +418,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- REGALOS Y VESTIMENTA (Aplica ola verde) -->
+  <!-- REGALOS Y VESTIMENTA -->
   <section class="regalos-vestimenta wave-to-green">
     <div class="grid-2-col">
       <div class="card-box reveal">
@@ -341,7 +453,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- FOTOGRAFÍAS (Aplica ola gris) -->
+  <!-- FOTOGRAFÍAS -->
   <section class="fotos-invitados wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado-claro); margin-bottom: 15px;"></iconify-icon>
@@ -447,16 +559,24 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 
 <script>
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
-const WHATSAPP_NUMERO = '584243547882'; 
+const WHATSAPP_NUMERO = '584243547882'; // <--- CAMBIAR POR TU NÚMERO
 const audio = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-btn');
 
 function abrirInvitacion() {
+  // 1. Iniciar la animación del sobre
   document.getElementById('portada').classList.add('abrir');
+  
+  // 2. Reproducir música
+  audio.play().catch(e => console.log("Audio bloqueado:", e));
+  musicBtn.classList.add('visible');
+  
+  // 3. Esperar a que termine la animación para iniciar el scroll y las animaciones
   setTimeout(() => {
     document.getElementById('portada').style.display = 'none';
+    window.scrollTo(0, 0);
     iniciarAnimacionesScroll();
-  }, 1500);
-  audio.play().catch(e => console.log("Audio bloqueado:", e));
+  }, 1800); // 1.8s para dar tiempo a que la carta se deslice
 }
 
 function iniciarAnimacionesScroll() {
@@ -495,7 +615,6 @@ function actualizarConteo() {
 setInterval(actualizarConteo, 1000);
 actualizarConteo();
 
-const musicBtn = document.getElementById('music-btn');
 musicBtn.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
 
 function openMap(url) { document.getElementById('map-iframe').src = url; document.getElementById('map-modal').classList.add('activo'); }
