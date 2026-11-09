@@ -40,143 +40,28 @@ img{max-width: 100%; display: block}
 .delay-3 { transition-delay: 0.3s; }
 
 /* ==================== PORTADA CON SOBRE 3D ==================== */
-#portada {
-  position: fixed; inset: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: center;
-  background-color: var(--fondo-marmol);
-  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-  transition: opacity 1.5s ease, visibility 1.5s;
-  perspective: 1000px;
-}
+#portada { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background-color: var(--fondo-marmol); background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); transition: opacity 1.5s ease, visibility 1.5s; perspective: 1000px; }
 #portada.abrir { opacity: 0; visibility: hidden; }
-
-.envelope-wrapper {
-  position: relative;
-  width: 340px;
-  height: 240px;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
-}
+.envelope-wrapper { position: relative; width: 340px; height: 240px; cursor: pointer; transform-style: preserve-3d; transition: transform 0.5s ease; }
 .envelope-wrapper:hover { transform: translateY(-10px); }
-
-/* Fondo del sobre */
-.envelope-back {
-  position: absolute; inset: 0;
-  background-color: #fcfcfc;
-  border-radius: 8px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-  z-index: 1;
-}
-
-/* Carta interior (asoma al abrir) */
-.letter {
-  position: absolute;
-  top: 10px; left: 15px; right: 15px; bottom: 10px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  z-index: 2;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-  padding: 20px;
-}
+.envelope-back { position: absolute; inset: 0; background-color: #fcfcfc; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); z-index: 1; }
+.letter { position: absolute; top: 10px; left: 15px; right: 15px; bottom: 10px; background-color: #fff; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; padding: 20px; }
 .letter .script { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--dorado); margin-bottom: 10px; }
 .letter p { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
+.envelope-flap { position: absolute; width: 0; height: 0; border-style: solid; z-index: 3; }
+.flap-bottom { bottom: 0; left: 0; right: 0; height: 0; border-left: 170px solid transparent; border-right: 170px solid transparent; border-bottom: 120px solid #f0f0f0; z-index: 4; border-radius: 0 0 8px 8px; }
+.flap-left { top: 0; left: 0; bottom: 0; border-top: 120px solid transparent; border-bottom: 120px solid transparent; border-left: 170px solid #f8f8f8; z-index: 3; border-radius: 8px 0 0 8px; }
+.flap-right { top: 0; right: 0; bottom: 0; border-top: 120px solid transparent; border-bottom: 120px solid transparent; border-right: 170px solid #f8f8f8; z-index: 3; border-radius: 0 8px 8px 0; }
+.flap-top { top: 0; left: 0; right: 0; height: 0; border-left: 170px solid transparent; border-right: 170px solid transparent; border-top: 130px solid #ffffff; z-index: 5; transform-origin: top; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.1s 0.4s; border-radius: 8px 8px 0 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.wax-seal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85px; height: 85px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fcf6ba, #b38728 60%, #96763f); box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.4), inset 0 -5px 15px rgba(0,0,0,0.4); z-index: 6; display: flex; align-items: center; justify-content: center; color: #3d2f12; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 1px 1px 1px rgba(255,255,255,0.3); transition: all 0.4s ease; cursor: pointer; }
+.wax-seal::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid rgba(61, 47, 18, 0.3); }
+.envelope-wrapper:hover .wax-seal { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.4); }
+#portada.abrir .flap-top { transform: rotateX(180deg); z-index: 1; }
+#portada.abrir .letter { transform: translateY(-120px); z-index: 6; }
+#portada.abrir .wax-seal { opacity: 0; transform: translate(-50%, -50%) scale(1.5) rotate(15deg); }
 
-/* Solapas del sobre */
-.envelope-flap {
-  position: absolute; width: 0; height: 0;
-  border-style: solid;
-  z-index: 3;
-}
-/* Solapa inferior */
-.flap-bottom {
-  bottom: 0; left: 0; right: 0; height: 0;
-  border-left: 170px solid transparent;
-  border-right: 170px solid transparent;
-  border-bottom: 120px solid #f0f0f0;
-  z-index: 4;
-  border-radius: 0 0 8px 8px;
-}
-/* Solapas laterales (decorativas) */
-.flap-left {
-  top: 0; left: 0; bottom: 0;
-  border-top: 120px solid transparent;
-  border-bottom: 120px solid transparent;
-  border-left: 170px solid #f8f8f8;
-  z-index: 3;
-  border-radius: 8px 0 0 8px;
-}
-.flap-right {
-  top: 0; right: 0; bottom: 0;
-  border-top: 120px solid transparent;
-  border-bottom: 120px solid transparent;
-  border-right: 170px solid #f8f8f8;
-  z-index: 3;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Solapa superior (la que se abre) */
-.flap-top {
-  top: 0; left: 0; right: 0; height: 0;
-  border-left: 170px solid transparent;
-  border-right: 170px solid transparent;
-  border-top: 130px solid #ffffff;
-  z-index: 5;
-  transform-origin: top;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.1s 0.4s;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* Sello de Cera */
-.wax-seal {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 85px; height: 85px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fcf6ba, #b38728 60%, #96763f);
-  box-shadow: 
-    0 6px 15px rgba(0,0,0,0.3), 
-    inset 0 0 10px rgba(255,255,255,0.4),
-    inset 0 -5px 15px rgba(0,0,0,0.4);
-  z-index: 6;
-  display: flex; align-items: center; justify-content: center;
-  color: #3d2f12;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-.wax-seal::before {
-  content: ''; position: absolute; inset: 6px;
-  border-radius: 50%; border: 1px solid rgba(61, 47, 18, 0.3);
-}
-.envelope-wrapper:hover .wax-seal {
-  transform: translate(-50%, -50%) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.4);
-}
-
-/* ==================== ANIMACIÓN DE APERTURA ==================== */
-#portada.abrir .flap-top {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-#portada.abrir .letter {
-  transform: translateY(-120px);
-  z-index: 6;
-}
-#portada.abrir .wax-seal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(1.5) rotate(15deg);
-}
-
-/* ==================== ESTILOS RESTO DE LA PÁGINA ==================== */
-#music-btn{ position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(74, 89, 71, 0.9); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; }
+/* ==================== ESTILOS GENERALES ==================== */
+#music-btn{ position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(74, 89, 71, 0.9); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); transition: transform 0.3s, opacity 0.5s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; }
 #music-btn.visible { opacity: 1; pointer-events: auto; }
 #music-btn:hover{transform: scale(1.1)}
 
@@ -199,7 +84,7 @@ img{max-width: 100%; display: block}
 .btn-calendario { display: inline-flex; align-items: center; gap: 10px; background: var(--blanco); border: 1px solid var(--verde-oliva); color: var(--verde-oliva); padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
 .btn-calendario:hover { background: var(--verde-oliva); color: var(--blanco); }
 
-/* OLAS SIN ESPACIOS */
+/* ==================== OLAS SIN ESPACIOS ==================== */
 .wave-to-green { position: relative; padding-bottom: 70px !important; z-index: 2; }
 .wave-to-green::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%234A5947' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E"); background-size: 100% 100%; background-repeat: no-repeat; pointer-events: none; }
 .wave-to-light { position: relative; padding-bottom: 70px !important; z-index: 2; }
@@ -217,11 +102,26 @@ img{max-width: 100%; display: block}
 .foto-versiculo blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--texto); max-width: 700px; margin: 0 auto 15px; line-height: 1.5; }
 .foto-versiculo cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal; display: block; }
 
+/* ==================== GALERÍA VERTICAL ==================== */
 .galeria { padding: 60px 20px; text-align: center; }
-.galeria-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto; }
-.galeria-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
-.galeria img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; }
+.galeria-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; /* Separación entre fotos */
+  max-width: 450px; /* Ancho máximo para que no se estiren demasiado en PC */
+  margin: 0 auto;
+}
+.galeria-vertical img { 
+  width: 100%; 
+  height: auto;
+  aspect-ratio: 4 / 5; /* Proporción vertical (retrato) */
+  object-fit: cover; 
+  border-radius: 15px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
 
+/* ITINERARIO */
 .itinerario { padding: 80px 20px; text-align: center; }
 .itinerario h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
 .crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 800px; margin: 0 auto}
@@ -283,8 +183,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 @media (max-width: 768px){
   .hero, .grid-2-col, .grid-recomendaciones { grid-template-columns: 1fr; }
   .hero-foto { height: 60vh; }
-  .galeria-grid-3, .galeria-grid-2 { grid-template-columns: 1fr; }
-  .galeria img { height: 250px; }
   .crono-grid { flex-direction: column; gap: 30px; }
   .conteo-numeros { gap: 15px; }
   .conteo-item .num { font-size: 2.5rem; }
@@ -300,41 +198,31 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 </head>
 <body>
 
-<!-- BOTÓN MÚSICA -->
 <button id="music-btn">
   <iconify-icon icon="mdi:music" width="24" height="24" style="color: #fff;"></iconify-icon>
 </button>
 
-<!-- REPRODUCTOR DE MÚSICA -->
 <audio id="bg-music" loop>
   <source src="porsiempre.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PORTADA CON SOBRE ANIMADO -->
 <div id="portada">
   <div class="envelope-wrapper" onclick="abrirInvitacion()">
     <div class="envelope-back"></div>
-    
-    <!-- La carta que sale -->
     <div class="letter">
       <div class="script">J & M</div>
       <p>Nuestra Boda</p>
     </div>
-    
-    <!-- Solapas -->
     <div class="envelope-flap flap-bottom"></div>
     <div class="envelope-flap flap-left"></div>
     <div class="envelope-flap flap-right"></div>
     <div class="envelope-flap flap-top"></div>
-    
-    <!-- Sello de cera -->
     <div class="wax-seal">Abrir</div>
   </div>
 </div>
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <img src="portada.jpg" alt="Jhonny y María" class="hero-foto reveal" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'">
     <div class="hero-texto reveal delay-1">
@@ -342,7 +230,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- FECHA Y CONTEO -->
   <section class="fecha-seccion wave-to-green">
     <div class="reveal">
       <div class="dia-semana">DOMINGO</div>
@@ -366,7 +253,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </a>
   </section>
 
-  <!-- CEREMONIA -->
   <section class="ceremonia wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado-claro); margin: 0 auto 20px;"></iconify-icon>
@@ -378,7 +264,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- FOTO Y VERSÍCULO -->
   <section class="foto-versiculo">
     <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
     <blockquote class="reveal delay-1">
@@ -387,16 +272,15 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     <cite class="reveal delay-2">Mateo 19:6</cite>
   </section>
 
-  <!-- TRES FOTOS -->
+  <!-- ==================== GALERÍA VERTICAL (3 FOTOS) ==================== -->
   <section class="galeria">
-    <div class="galeria-grid-3">
+    <div class="galeria-vertical">
       <img src="nosotros1.jpg" class="reveal delay-1" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
       <img src="nosotros2.jpg" class="reveal delay-2" alt="Foto 2" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80'">
       <img src="nosotros3.jpg" class="reveal delay-3" alt="Foto 3" onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80'">
     </div>
   </section>
 
-  <!-- ITINERARIO -->
   <section class="itinerario">
     <h2 class="reveal">Itinerario</h2>
     <div class="crono-grid">
@@ -418,7 +302,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- REGALOS Y VESTIMENTA -->
   <section class="regalos-vestimenta wave-to-green">
     <div class="grid-2-col">
       <div class="card-box reveal">
@@ -426,7 +309,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
         <h3>Sugerencia de Regalos</h3>
         <p>“Tu presencia es la mayor bendición para nosotros, pero si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:”</p>
         <p style="font-weight: bold; color: var(--verde-oliva); margin-bottom: 10px;">Efectivo en Divisas $ o Pago Móvil</p>
-        <img src="qr.jpeg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <img src="qr.jpg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <div class="datos-banco">
           <strong>Banesco</strong><br>
           Código: 0134<br>
@@ -453,7 +336,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- FOTOGRAFÍAS -->
   <section class="fotos-invitados wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado-claro); margin-bottom: 15px;"></iconify-icon>
@@ -465,15 +347,14 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- DOS FOTOS -->
+  <!-- ==================== GALERÍA VERTICAL (2 FOTOS) ==================== -->
   <section class="galeria">
-    <div class="galeria-grid-2">
+    <div class="galeria-vertical">
       <img src="nosotros4.jpg" class="reveal delay-1" alt="Foto 4" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80'">
       <img src="nosotros5.jpg" class="reveal delay-2" alt="Foto 5" onerror="this.src='https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=800&q=80'">
     </div>
   </section>
 
-  <!-- RECOMENDACIONES -->
   <section class="recomendaciones">
     <h2 class="reveal">Recomendaciones</h2>
     <div class="grid-recomendaciones">
@@ -500,7 +381,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- INVITADO Y RSVP -->
   <section class="invitado-rsvp" id="rsvp">
     <div class="reveal">
       <p class="frase">“Nuestra felicidad no estaría completa sin ti en nuestra celebración”</p>
@@ -535,7 +415,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </form>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <blockquote class="reveal">
       "Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios. El que no ama, no ha conocido a Dios; porque Dios es amor"
@@ -559,24 +438,19 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 
 <script>
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
-const WHATSAPP_NUMERO = '584243547882'; // <--- CAMBIAR POR TU NÚMERO
+const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR POR TU NÚMERO
 const audio = document.getElementById('bg-music');
 const musicBtn = document.getElementById('music-btn');
 
 function abrirInvitacion() {
-  // 1. Iniciar la animación del sobre
   document.getElementById('portada').classList.add('abrir');
-  
-  // 2. Reproducir música
   audio.play().catch(e => console.log("Audio bloqueado:", e));
   musicBtn.classList.add('visible');
-  
-  // 3. Esperar a que termine la animación para iniciar el scroll y las animaciones
   setTimeout(() => {
     document.getElementById('portada').style.display = 'none';
     window.scrollTo(0, 0);
     iniciarAnimacionesScroll();
-  }, 1800); // 1.8s para dar tiempo a que la carta se deslice
+  }, 1800); 
 }
 
 function iniciarAnimacionesScroll() {
@@ -628,7 +502,7 @@ document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   let texto = `*Confirmación de Asistencia*\n\n👤 *Nombre:* ${nombre}\n✅ *Asistencia:* ${asistencia}\n👥 *Pases reservados:* ${pases}\n`;
   if (mensaje) texto += `💬 *Mensaje:* ${mensaje}\n`;
   texto += `\n_Enviado desde la invitación digital de Jhonny y María_`;
-  window.open(`https://wa.me/${584243547882}?text=${encodeURIComponent(texto)}`, '_blank');
+  window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`, '_blank');
   document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
 });
 </script>
