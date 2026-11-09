@@ -5,16 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jhonny & María — ¡Nos Casamos!</title>
 
-<!-- Fuentes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-<!-- Script de Iconify -->
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
-/* ==================== VARIABLES ==================== */
 :root{
   --fondo-marmol: #f9f9f8; 
   --verde-oliva: #4A5947;  
@@ -36,135 +32,102 @@ body{
 }
 img{max-width: 100%; display: block}
 
-/* ==================== ANIMACIÓN ZOOM AL SCROLL ==================== */
-.reveal {
-  opacity: 0;
-  transform: scale(0.94) translateY(30px);
-  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: opacity, transform;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
+/* ==================== ANIMACIÓN ZOOM ==================== */
+.reveal { opacity: 0; transform: scale(0.94) translateY(30px); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+.reveal.visible { opacity: 1; transform: scale(1) translateY(0); }
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 
-/* Tipografías */
-.script{font-family: 'Great Vibes', cursive; color: var(--dorado)}
+/* ==================== LA SOLUCIÓN DEFINITIVA A LAS OLAS ==================== */
+/* Clase para cuando la sección actual es GRIS y la siguiente es VERDE */
+.wave-to-green {
+  position: relative;
+  padding-bottom: 70px !important; /* Espacio para la ola */
+  z-index: 2;
+}
+.wave-to-green::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; /* Se superpone 1px a la siguiente sección */
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%234A5947' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
 
-/* ==================== PORTADA ==================== */
-#portada{
-  position: fixed; inset: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: center;
-  background-color: var(--fondo-marmol);
-  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-  transition: opacity 1.5s ease, transform 1.5s ease;
+/* Clase para cuando la sección actual es VERDE y la siguiente es GRIS */
+.wave-to-light {
+  position: relative;
+  padding-bottom: 70px !important;
+  z-index: 2;
 }
+.wave-to-light::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23f9f9f8' d='M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* ==================== PORTADA Y BOTONES ==================== */
+#portada{ position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background-color: var(--fondo-marmol); background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); transition: opacity 1.5s ease, transform 1.5s ease; }
 #portada.abrir{opacity: 0; transform: scale(1.05); pointer-events: none}
-.btn-abrir{
-  padding: 15px 40px; background: var(--verde-oliva); color: #fff;
-  border: none; border-radius: 30px; font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem; letter-spacing: 0.15em; cursor: pointer; text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;
-}
+.btn-abrir{ padding: 15px 40px; background: var(--verde-oliva); color: #fff; border: none; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s; }
 .btn-abrir:hover{background: var(--verde-oscuro)}
-#music-btn{
-  position: fixed; bottom: 20px; right: 20px; z-index: 100;
-  width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(74, 89, 71, 0.9); color: #fff; border: none;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+#music-btn{ position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(74, 89, 71, 0.9); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 #music-btn:hover{transform: scale(1.1)}
 
-/* ==================== PÁGINA 1: HERO ==================== */
-.hero{
-  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; padding: 40px; gap: 40px;
-}
-.hero-foto{
-  width: 100%; height: 80vh; object-fit: cover;
-  border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+/* ==================== HERO ==================== */
+.hero{ min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 40px; gap: 40px; }
+.hero-foto{ width: 100%; height: 80vh; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .hero-texto{text-align: center; padding: 20px}
-.hero-texto h1{
-  font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 8vw, 7rem);
-  color: var(--dorado); line-height: 0.9; margin-bottom: 20px;
-}
+.hero-texto h1{ font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 8vw, 7rem); color: var(--dorado); line-height: 0.9; margin-bottom: 20px; }
 .hero-texto h1 span{font-size: 0.4em; display: block; margin: 10px 0}
 
-/* ==================== PÁGINA 2: CONTEO Y CALENDARIO ==================== */
-.fecha-seccion{ text-align: center; padding: 80px 20px 40px; } /* Padding bottom reducido para la ola */
+/* ==================== FECHA Y CONTEO ==================== */
+.fecha-seccion{ text-align: center; padding: 80px 20px; }
 .fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
 .fecha-seccion .numero{font-size: 6rem; line-height: 1; color: var(--verde-oliva); margin: 10px 0; font-family: 'Cormorant Garamond', serif}
 .fecha-seccion .mes-año{font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--dorado); text-transform: uppercase; margin-bottom: 20px}
 .fecha-seccion .hora{font-size: 2rem; font-style: italic; color: var(--texto); margin-bottom: 30px}
-
-.conteo-box{
-  border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 30px 20px; max-width: 500px; margin: 0 auto 30px;
-}
+.conteo-box{ border: 1px solid var(--dorado); border-radius: 20px; padding: 30px 20px; max-width: 500px; margin: 0 auto 30px; background: rgba(255,255,255,0.5); }
 .conteo-box h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.9rem; color: var(--dorado); margin-bottom: 20px; text-transform: uppercase}
 .conteo-numeros{display: flex; justify-content: center; gap: 30px}
 .conteo-item .num{font-size: 3rem; color: var(--verde-oliva); line-height: 1}
 .conteo-item .lbl{font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-top: 5px}
-
-.btn-calendario {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--blanco); border: 1px solid var(--verde-oliva); color: var(--verde-oliva);
-  padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase;
-  transition: all 0.3s;
-}
+.btn-calendario { display: inline-flex; align-items: center; gap: 10px; background: var(--blanco); border: 1px solid var(--verde-oliva); color: var(--verde-oliva); padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
 .btn-calendario:hover { background: var(--verde-oliva); color: var(--blanco); }
 
-/* ==================== PÁGINA 3: FOTO Y VERSÍCULO ==================== */
-.foto-versiculo { padding: 60px 20px 0; text-align: center; } /* Padding bottom 0 para la ola */
-.foto-versiculo .foto-full {
-  width: 100%; max-width: 500px; margin: 0 auto 40px;
-  border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.foto-versiculo blockquote {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic;
-  color: var(--texto); max-width: 700px; margin: 0 auto 15px; line-height: 1.5;
-}
-.foto-versiculo cite {
-  font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal;
-  display: block; margin-bottom: 40px;
-}
-
-/* ==================== SOLUCIÓN DEFINITIVA A LAS OLAS ==================== */
-.svg-wave {
-  display: block;
-  width: 100%;
-  height: 50px;
-  margin-bottom: -2px; /* Esto evita el espacio blanco */
-  vertical-align: middle;
-}
-
-/* ==================== PÁGINA 4: CEREMONIA ==================== */
-.ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 60px 20px 40px; }
+/* ==================== CEREMONIA ==================== */
+.ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 60px 20px; }
 .ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 20px; }
 .ceremonia .lugar { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
 .ceremonia .hora { font-size: 2.5rem; font-style: italic; margin-bottom: 30px; color: #fff; }
-.btn-ubicacion{
-  background: var(--blanco); color: var(--verde-oliva); text-decoration: none;
-  padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
-  cursor: pointer; border: none; display: inline-block; margin-bottom: 20px;
-}
+.btn-ubicacion{ background: var(--blanco); color: var(--verde-oliva); text-decoration: none; padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s; cursor: pointer; border: none; display: inline-block; margin-bottom: 20px; }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
 
-/* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
+/* ==================== FOTO Y VERSÍCULO ==================== */
+.foto-versiculo { padding: 60px 20px; text-align: center; background-color: var(--fondo-marmol); }
+.foto-versiculo .foto-full { width: 100%; max-width: 500px; margin: 0 auto 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.foto-versiculo blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--texto); max-width: 700px; margin: 0 auto 15px; line-height: 1.5; }
+.foto-versiculo cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal; display: block; }
+
+/* ==================== GALERÍAS ==================== */
 .galeria { padding: 60px 20px; text-align: center; }
 .galeria-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto; }
 .galeria-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
 .galeria img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; }
 
-/* ==================== PÁGINA 6: ITINERARIO ==================== */
+/* ==================== ITINERARIO ==================== */
 .itinerario { padding: 80px 20px; text-align: center; }
 .itinerario h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
 .crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 800px; margin: 0 auto}
@@ -172,13 +135,10 @@ img{max-width: 100%; display: block}
 .crono-item .hora{font-size: 1.8rem; font-style: italic; margin-bottom: 5px; color: var(--verde-oliva); font-weight: 500;}
 .crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
 
-/* ==================== PÁGINA 7: REGALOS Y VESTIMENTA ==================== */
-.regalos-vestimenta { padding: 60px 20px 0; } /* Padding bottom 0 para la ola */
-.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto 40px; }
-.card-box {
-  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 40px 30px; text-align: center; display: flex; flex-direction: column; align-items: center;
-}
+/* ==================== REGALOS Y VESTIMENTA ==================== */
+.regalos-vestimenta { padding: 60px 20px; background-color: var(--fondo-marmol); }
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+.card-box { background: #fff; border: 1px solid var(--dorado); border-radius: 20px; padding: 40px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .card-box h3 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px; }
 .card-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
 .qr-img { width: 180px; margin: 0 auto 20px; border-radius: 10px; border: 1px solid #eee; }
@@ -187,39 +147,31 @@ img{max-width: 100%; display: block}
 .color-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
 .nota-reserva { font-size: 0.9rem; font-weight: 500; color: #b23a3a; background: #fdf0f0; padding: 10px; border-radius: 8px; margin-top: 15px; }
 
-/* ==================== PÁGINA 8: FOTOGRAFÍAS ==================== */
-.fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px 40px; }
+/* ==================== FOTOGRAFÍAS ==================== */
+.fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
 .fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 15px; }
 .fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.8; }
 
-/* ==================== PÁGINA 10: RECOMENDACIONES ==================== */
+/* ==================== RECOMENDACIONES ==================== */
 .recomendaciones { padding: 80px 20px; }
 .recomendaciones h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); text-align: center; margin-bottom: 50px; }
 .grid-recomendaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
-.recomendacion-card { 
-  background: #fff; padding: 30px; border-radius: 15px; border-left: 4px solid var(--dorado); 
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-}
+.recomendacion-card { background: #fff; padding: 30px; border-radius: 15px; border-left: 4px solid var(--dorado); display: flex; flex-direction: column; align-items: center; text-align: center; }
 .recomendacion-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde-oliva); font-weight: 600; }
 .recomendacion-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); line-height: 1.6; }
 
-/* ==================== DIVISORES DECORATIVOS ==================== */
-.divisor-decorativo {
-  display: flex; align-items: center; justify-content: center; margin: 30px auto; width: 100%; max-width: 250px;
-}
-.divisor-decorativo::before, .divisor-decorativo::after {
-  content: ''; flex: 1; height: 1px; background: var(--dorado); opacity: 0.6;
-}
+/* ==================== DIVISORES ==================== */
+.divisor-decorativo { display: flex; align-items: center; justify-content: center; margin: 30px auto; width: 100%; max-width: 250px; }
+.divisor-decorativo::before, .divisor-decorativo::after { content: ''; flex: 1; height: 1px; background: var(--dorado); opacity: 0.6; }
 .divisor-decorativo span { padding: 0 15px; color: var(--dorado); font-size: 1.2rem; }
 .divisor-decorativo.dark::before, .divisor-decorativo.dark::after { background: var(--dorado-claro); opacity: 0.8; }
 .divisor-decorativo.dark span { color: var(--dorado-claro); }
 
-/* ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== */
+/* ==================== INVITADO Y RSVP ==================== */
 .invitado-rsvp { padding: 60px 20px 80px; text-align: center; }
 .invitado-rsvp h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 15px; line-height: 1; }
 .invitado-rsvp .frase { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--texto-suave); margin-bottom: 20px; }
 .nombre-invitado { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--verde-oliva); margin-bottom: 20px; }
-
 #rsvp-form { max-width: 500px; margin: 0 auto; text-align: left; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 8px; }
@@ -228,20 +180,19 @@ img{max-width: 100%; display: block}
 .btn-enviar { width: 100%; background: var(--verde-oliva); color: #fff; border: none; border-radius: 8px; padding: 15px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.3s; margin-top: 10px; }
 .btn-enviar:hover { background: var(--verde-oscuro); }
 
-/* ==================== PÁGINA 13: FOOTER ==================== */
+/* ==================== FOOTER ==================== */
 footer { background: var(--verde-oliva); color: #fff; text-align: center; padding: 80px 20px; }
 footer blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; max-width: 700px; margin: 0 auto; line-height: 1.7; opacity: 0.95; }
 footer cite { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado-claro); font-style: normal; display: block; margin-top: 15px; }
 footer .te-esperamos { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
 footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--dorado-claro); }
 
-/* ==================== MODAL MAPA ==================== */
+/* ==================== MODAL ==================== */
 .modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; }
 .modal.activo { display: flex; }
 .modal-content { background-color: #fff; padding: 20px; border-radius: 15px; width: 100%; max-width: 600px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 .close-btn { position: absolute; top: -15px; right: -15px; font-size: 30px; cursor: pointer; color: #fff; background: var(--verde-oliva); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
 
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px){
   .hero, .grid-2-col, .grid-recomendaciones { grid-template-columns: 1fr; }
   .hero-foto { height: 60vh; }
@@ -257,24 +208,21 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 </head>
 <body>
 
-<!-- BOTÓN MÚSICA -->
 <button id="music-btn">
   <iconify-icon icon="mdi:music" width="24" height="24" style="color: #fff;"></iconify-icon>
 </button>
 
-<!-- REPRODUCTOR DE MÚSICA -->
 <audio id="bg-music" loop>
   <source src="porsiempre.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PORTADA DE ENTRADA -->
 <div id="portada">
   <button class="btn-abrir" onclick="abrirInvitacion()">Abrir Invitación</button>
 </div>
 
 <main>
 
-  <!-- ==================== PÁGINA 1: HERO ==================== -->
+  <!-- HERO -->
   <section class="hero">
     <img src="portada.jpg" alt="Jhonny y María" class="hero-foto reveal" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'">
     <div class="hero-texto reveal delay-1">
@@ -282,8 +230,8 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 2: CONTEO Y CALENDARIO ==================== -->
-  <section class="fecha-seccion">
+  <!-- FECHA Y CONTEO (Aplica ola verde) -->
+  <section class="fecha-seccion wave-to-green">
     <div class="reveal">
       <div class="dia-semana">DOMINGO</div>
       <div class="numero">30</div>
@@ -306,29 +254,8 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </a>
   </section>
 
-  <!-- OLA SVG 1 -->
-  <svg class="svg-wave" style="background-color: var(--fondo-marmol);" viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
-
-  <!-- ==================== PÁGINA 3: FOTO Y VERSÍCULO (Se movió aquí para respetar el orden) ==================== -->
-  <section class="foto-versiculo" style="background-color: var(--verde-oliva); padding-top: 0;">
-    <div style="background-color: var(--fondo-marmol); padding: 60px 20px; border-radius: 0 0 50px 50px;">
-      <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
-      <blockquote class="reveal delay-1">
-        "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre"
-      </blockquote>
-      <cite class="reveal delay-2">Mateo 19:6</cite>
-    </div>
-  </section>
-  
-  <!-- OLA SVG 2 -->
-  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
-
-  <!-- ==================== PÁGINA 4: CEREMONIA ==================== -->
-  <section class="ceremonia">
+  <!-- CEREMONIA (Aplica ola gris) -->
+  <section class="ceremonia wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado-claro); margin: 0 auto 20px;"></iconify-icon>
       <h2>Ceremonia</h2>
@@ -339,12 +266,16 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG 3 -->
-  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
+  <!-- FOTO Y VERSÍCULO -->
+  <section class="foto-versiculo">
+    <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
+    <blockquote class="reveal delay-1">
+      "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre"
+    </blockquote>
+    <cite class="reveal delay-2">Mateo 19:6</cite>
+  </section>
 
-  <!-- ==================== PÁGINA 5: TRES FOTOS ==================== -->
+  <!-- TRES FOTOS -->
   <section class="galeria">
     <div class="galeria-grid-3">
       <img src="nosotros1.jpg" class="reveal delay-1" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
@@ -353,7 +284,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 6: ITINERARIO ==================== -->
+  <!-- ITINERARIO -->
   <section class="itinerario">
     <h2 class="reveal">Itinerario</h2>
     <div class="crono-grid">
@@ -375,16 +306,15 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 7: REGALOS Y VESTIMENTA ==================== -->
-  <section class="regalos-vestimenta">
+  <!-- REGALOS Y VESTIMENTA (Aplica ola verde) -->
+  <section class="regalos-vestimenta wave-to-green">
     <div class="grid-2-col">
-      <!-- Regalos -->
       <div class="card-box reveal">
         <iconify-icon icon="mdi:gift" width="50" height="50" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <h3>Sugerencia de Regalos</h3>
         <p>“Tu presencia es la mayor bendición para nosotros, pero si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:”</p>
         <p style="font-weight: bold; color: var(--verde-oliva); margin-bottom: 10px;">Efectivo en Divisas $ o Pago Móvil</p>
-        <img src="qr.jpg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <img src="qr.jpeg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <div class="datos-banco">
           <strong>Banesco</strong><br>
           Código: 0134<br>
@@ -394,7 +324,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
         <p style="font-size: 0.85rem; margin-top: 15px; font-style: italic;">Nota: En el lugar de la ceremonia, se encontrará ubicado una caja o un cofre donde los invitados podrán insertar su sobre con su respectivo regalo.</p>
       </div>
 
-      <!-- Vestimenta -->
       <div class="card-box reveal delay-1">
         <iconify-icon icon="mdi:hanger" width="50" height="50" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <h3>Código de Vestimenta</h3>
@@ -403,7 +332,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
           <div class="color-box" style="background:#465440;"></div>
           <div class="color-box" style="background:#a68a61;"></div>
           <div class="color-box" style="background:#593b22;"></div>
-          <div class="color-box" style="background:#1b2a47;"></div> <!-- Azul marino -->
+          <div class="color-box" style="background:#1b2a47;"></div>
         </div>
         <div class="nota-reserva">
           Nota Importante: El color blanco y el azul marino están reservados solo para los novios.
@@ -412,13 +341,8 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG 4 -->
-  <svg class="svg-wave" style="background-color: var(--fondo-marmol);" viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
-
-  <!-- ==================== PÁGINA 8: FOTOGRAFÍAS ==================== -->
-  <section class="fotos-invitados">
+  <!-- FOTOGRAFÍAS (Aplica ola gris) -->
+  <section class="fotos-invitados wave-to-light">
     <div class="reveal">
       <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado-claro); margin-bottom: 15px;"></iconify-icon>
       <h2>Fotografías</h2>
@@ -429,12 +353,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG 5 -->
-  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
-
-  <!-- ==================== PÁGINA 9: DOS FOTOS ==================== -->
+  <!-- DOS FOTOS -->
   <section class="galeria">
     <div class="galeria-grid-2">
       <img src="nosotros4.jpg" class="reveal delay-1" alt="Foto 4" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80'">
@@ -442,12 +361,11 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 10: RECOMENDACIONES ==================== -->
+  <!-- RECOMENDACIONES -->
   <section class="recomendaciones">
     <h2 class="reveal">Recomendaciones</h2>
     <div class="grid-recomendaciones">
       <div class="recomendacion-card reveal delay-1">
-        <!-- ICONO DE NIÑO AQUI -->
         <iconify-icon icon="mdi:human-child" width="45" height="45" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
         <h4>Cero Niños</h4>
         <p>Hemos preparado una recepción, exclusivamente para adultos.</p>
@@ -470,17 +388,13 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== -->
+  <!-- INVITADO Y RSVP -->
   <section class="invitado-rsvp" id="rsvp">
     <div class="reveal">
       <p class="frase">“Nuestra felicidad no estaría completa sin ti en nuestra celebración”</p>
-      
       <div class="divisor-decorativo"><span>✦</span></div>
-      
       <div class="nombre-invitado" id="nombre-invitado">Invitado Especial</div>
-      
       <div class="divisor-decorativo"><span>✦</span></div>
-
       <h2>Confirma tu Asistencia</h2>
       <p class="frase" style="font-size: 1.15rem; margin-bottom: 40px;">Estamos cuidando cada detalle para que pases un día inolvidable, ayúdanos confirmando tu asistencia lo antes posible.</p>
     </div>
@@ -509,7 +423,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </form>
   </section>
 
-  <!-- ==================== PÁGINA 13: FOOTER ==================== -->
+  <!-- FOOTER -->
   <footer>
     <blockquote class="reveal">
       "Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios. El que no ama, no ha conocido a Dios; porque Dios es amor"
@@ -524,7 +438,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 
 </main>
 
-<!-- MODAL MAPA -->
 <div id="map-modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeMap()">&times;</span>
@@ -533,31 +446,19 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
 </div>
 
 <script>
-// ==========================================
-// 1. CONFIGURACIÓN
-// ==========================================
 const FECHA_BODA = new Date('2026-11-30T17:00:00').getTime();
-const WHATSAPP_NUMERO = '584120000000'; // <--- CAMBIAR ESTO POR EL NÚMERO REAL
+const WHATSAPP_NUMERO = '584243547882'; 
 const audio = document.getElementById('bg-music');
 
-// ==========================================
-// 2. FUNCIÓN PARA ABRIR LA INVITACIÓN Y MÚSICA
-// ==========================================
 function abrirInvitacion() {
   document.getElementById('portada').classList.add('abrir');
   setTimeout(() => {
     document.getElementById('portada').style.display = 'none';
     iniciarAnimacionesScroll();
   }, 1500);
-  
-  audio.play().catch(e => {
-    console.log("Audio bloqueado por el navegador:", e);
-  });
+  audio.play().catch(e => console.log("Audio bloqueado:", e));
 }
 
-// ==========================================
-// 3. ANIMACIÓN ZOOM AL SCROLL
-// ==========================================
 function iniciarAnimacionesScroll() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -566,19 +467,11 @@ function iniciarAnimacionesScroll() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ==========================================
-// 4. LECTURA DE URL (Nombre del invitado)
-// ==========================================
 const params = new URLSearchParams(window.location.search);
 const nombreInvitado = params.get('nombre') || 'Invitado Especial';
 const pases = params.get('invitados') || '2';
@@ -586,26 +479,14 @@ const pases = params.get('invitados') || '2';
 document.getElementById('nombre-invitado').textContent = nombreInvitado;
 document.getElementById('nombre').value = nombreInvitado !== 'Invitado Especial' ? nombreInvitado : '';
 
-// ==========================================
-// 5. CUENTA REGRESIVA
-// ==========================================
 function actualizarConteo() {
   const ahora = new Date().getTime();
   const distancia = FECHA_BODA - ahora;
-
-  if (distancia < 0) {
-    document.getElementById('dias').innerText = '00';
-    document.getElementById('horas').innerText = '00';
-    document.getElementById('minutos').innerText = '00';
-    document.getElementById('segundos').innerText = '00';
-    return;
-  }
-
+  if (distancia < 0) { document.getElementById('dias').innerText = '00'; document.getElementById('horas').innerText = '00'; document.getElementById('minutos').innerText = '00'; document.getElementById('segundos').innerText = '00'; return; }
   const d = Math.floor(distancia / (1000 * 60 * 60 * 24));
   const h = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const m = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
   const s = Math.floor((distancia % (1000 * 60)) / 1000);
-
   document.getElementById('dias').innerText = String(d).padStart(2, '0');
   document.getElementById('horas').innerText = String(h).padStart(2, '0');
   document.getElementById('minutos').innerText = String(m).padStart(2, '0');
@@ -614,50 +495,21 @@ function actualizarConteo() {
 setInterval(actualizarConteo, 1000);
 actualizarConteo();
 
-// ==========================================
-// 6. BOTÓN FLOTANTE DE MÚSICA
-// ==========================================
 const musicBtn = document.getElementById('music-btn');
-musicBtn.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-});
+musicBtn.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
 
-// ==========================================
-// 7. MODAL DEL MAPA
-// ==========================================
-function openMap(url) {
-  document.getElementById('map-iframe').src = url;
-  document.getElementById('map-modal').classList.add('activo');
-}
-function closeMap() {
-  document.getElementById('map-modal').classList.remove('activo');
-  setTimeout(() => { document.getElementById('map-iframe').src = ""; }, 300);
-}
+function openMap(url) { document.getElementById('map-iframe').src = url; document.getElementById('map-modal').classList.add('activo'); }
+function closeMap() { document.getElementById('map-modal').classList.remove('activo'); setTimeout(() => { document.getElementById('map-iframe').src = ""; }, 300); }
 
-// ==========================================
-// 8. ENVÍO DE RSVP POR WHATSAPP
-// ==========================================
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  
   const nombre = document.getElementById('nombre').value;
   const asistencia = document.getElementById('asistencia').value;
   const mensaje = document.getElementById('mensaje').value;
-  
-  let texto = `*Confirmación de Asistencia*\n\n`;
-  texto += `👤 *Nombre:* ${nombre}\n`;
-  texto += `✅ *Asistencia:* ${asistencia}\n`;
-  texto += `👥 *Pases reservados:* ${pases}\n`;
+  let texto = `*Confirmación de Asistencia*\n\n👤 *Nombre:* ${nombre}\n✅ *Asistencia:* ${asistencia}\n👥 *Pases reservados:* ${pases}\n`;
   if (mensaje) texto += `💬 *Mensaje:* ${mensaje}\n`;
   texto += `\n_Enviado desde la invitación digital de Jhonny y María_`;
-
-  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
-  window.open(url, '_blank');
-  
+  window.open(`https://wa.me/${584243547882}?text=${encodeURIComponent(texto)}`, '_blank');
   document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
 });
 </script>
