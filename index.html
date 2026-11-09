@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Script de Iconify (v2) -->
+<!-- Script de Iconify -->
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
@@ -46,16 +46,14 @@ img{max-width: 100%; display: block}
   opacity: 1;
   transform: scale(1) translateY(0);
 }
-/* Retrasos para efecto cascada en grupos */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 
 /* Tipografías */
 .script{font-family: 'Great Vibes', cursive; color: var(--dorado)}
-.sans{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase}
 
-/* ==================== PORTADA ==================== */
+/* ==================== PORTADA (MÚSICA Y ENTRADA) ==================== */
 #portada{
   position: fixed; inset: 0; z-index: 200;
   display: flex; align-items: center; justify-content: center;
@@ -71,19 +69,16 @@ img{max-width: 100%; display: block}
   box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;
 }
 .btn-abrir:hover{background: var(--verde-oscuro)}
-
-/* ==================== BOTÓN MÚSICA ==================== */
 #music-btn{
   position: fixed; bottom: 20px; right: 20px; z-index: 100;
   width: 50px; height: 50px; border-radius: 50%;
   background: rgba(90, 107, 86, 0.85); color: #fff; border: none;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
-  backdrop-filter: blur(5px); transition: transform 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 #music-btn:hover{transform: scale(1.1)}
 
-/* ==================== HERO (PÁGINA 1) ==================== */
+/* ==================== PÁGINA 1: HERO ==================== */
 .hero{
   min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; padding: 40px; gap: 40px;
@@ -98,16 +93,9 @@ img{max-width: 100%; display: block}
   color: var(--dorado); line-height: 0.9; margin-bottom: 20px;
 }
 .hero-texto h1 span{font-size: 0.4em; display: block; margin: 10px 0}
-.hero-texto .versiculo{
-  font-style: italic; font-size: 1.2rem; color: var(--texto-suave);
-  margin-top: 40px; line-height: 1.6; max-width: 400px; margin-left: auto; margin-right: auto;
-}
 
-/* ==================== FECHA Y CONTEO (PÁGINA 2) ==================== */
-.fecha-seccion{
-  text-align: center; padding: 80px 20px 60px;
-  position: relative;
-}
+/* ==================== PÁGINA 2: CONTEO Y CALENDARIO ==================== */
+.fecha-seccion{ text-align: center; padding: 80px 20px 60px; }
 .fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
 .fecha-seccion .numero{font-size: 6rem; line-height: 1; color: var(--verde-oliva); margin: 10px 0; font-family: 'Cormorant Garamond', serif}
 .fecha-seccion .mes-año{font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--dorado); text-transform: uppercase; margin-bottom: 20px}
@@ -115,168 +103,133 @@ img{max-width: 100%; display: block}
 
 .conteo-box{
   border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 30px 20px; max-width: 500px; margin: 0 auto;
+  padding: 30px 20px; max-width: 500px; margin: 0 auto 30px;
 }
 .conteo-box h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.9rem; color: var(--dorado); margin-bottom: 20px; text-transform: uppercase}
 .conteo-numeros{display: flex; justify-content: center; gap: 30px}
 .conteo-item .num{font-size: 3rem; color: var(--verde-oliva); line-height: 1}
 .conteo-item .lbl{font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-top: 5px}
 
-/* ==================== OLAS SVG ==================== */
-.wave-container {
-  width: 100%;
-  line-height: 0;
-  margin-bottom: -1px;
+.btn-calendario {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--blanco); border: 1px solid var(--verde-oliva); color: var(--verde-oliva);
+  padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase;
+  transition: all 0.3s;
 }
-.wave-container svg {
-  width: 100%;
-  height: 50px;
-  display: block;
+.btn-calendario:hover { background: var(--verde-oliva); color: var(--blanco); }
+
+/* ==================== PÁGINA 3: FOTO Y VERSÍCULO ==================== */
+.foto-versiculo { padding: 60px 20px; text-align: center; }
+.foto-versiculo .foto-full {
+  width: 100%; max-width: 500px; margin: 0 auto 40px;
+  border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.foto-versiculo blockquote {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic;
+  color: var(--texto); max-width: 700px; margin: 0 auto 15px; line-height: 1.5;
+}
+.foto-versiculo cite {
+  font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal;
 }
 
-/* ==================== INVITADO Y PADRES (PÁGINA 3) ==================== */
-.seccion-verde{
-  background-color: var(--verde-oliva);
-  color: #fff; text-align: center; padding: 60px 20px;
-}
-.invitado h3{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; font-weight: 400; margin-bottom: 10px}
-.invitado .nombre-inv{font-family: 'Great Vibes', cursive; font-size: 4rem; color: #fff; margin-bottom: 20px}
-.invitado .pases{font-size: 1.2rem; line-height: 1.5}
-.invitado .pases strong{font-size: 2rem; display: block; color: var(--dorado)}
-
-.padres{padding: 60px 20px 80px; text-align: center}
-.padres h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 40px}
-.padres-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 800px; margin: 0 auto}
-.padres-col h4{font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em; font-size: 0.85rem; color: var(--dorado); margin-bottom: 15px; text-transform: uppercase}
-.padres-col p{font-size: 1.2rem; color: var(--texto); font-style: italic; line-height: 1.6}
-
-/* ==================== CEREMONIA Y RECEPCIÓN (PÁGINA 4) ==================== */
-.eventos{padding: 60px 20px; text-align: center}
-.eventos-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto}
-.evento-card{
-  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 40px 20px; display: flex; flex-direction: column; align-items: center;
-}
-.evento-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
-.evento-card .lugar{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 20px; text-transform: uppercase}
-.evento-card .hora{font-size: 2rem; font-style: italic; margin-bottom: 25px}
+/* ==================== PÁGINA 4: CEREMONIA ==================== */
+.ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
+.ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 20px; }
+.ceremonia .lugar { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.ceremonia .hora { font-size: 2.5rem; font-style: italic; margin-bottom: 30px; color: #fff; }
 .btn-ubicacion{
-  background: var(--verde-oliva); color: #fff; text-decoration: none;
-  padding: 10px 25px; border-radius: 5px; font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
+  background: var(--blanco); color: var(--verde-oliva); text-decoration: none;
+  padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
   cursor: pointer; border: none;
 }
-.btn-ubicacion:hover{background: var(--verde-oscuro)}
+.btn-ubicacion:hover{background: var(--dorado); color: #fff;}
+
+/* ==================== ONDAS SVG ==================== */
+.wave-container { width: 100%; line-height: 0; margin-bottom: -1px; }
+.wave-container svg { width: 100%; height: 50px; display: block; }
+
+/* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
+.galeria { padding: 60px 20px; text-align: center; }
+.galeria-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto; }
+.galeria-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
+.galeria img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; }
+
+/* ==================== PÁGINA 6: ITINERARIO ==================== */
+.itinerario { padding: 80px 20px; text-align: center; }
+.itinerario h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
+.crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 800px; margin: 0 auto}
+.crono-item{flex: 1; min-width: 150px; display: flex; flex-direction: column; align-items: center;}
+.crono-item .hora{font-size: 1.8rem; font-style: italic; margin-bottom: 5px; color: var(--verde-oliva); font-weight: 500;}
+.crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
+
+/* ==================== PÁGINA 7: REGALOS Y VESTIMENTA ==================== */
+.regalos-vestimenta { padding: 60px 20px; }
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+.card-box {
+  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
+  padding: 40px 30px; text-align: center; display: flex; flex-direction: column; align-items: center;
+}
+.card-box h3 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px; }
+.card-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
+.qr-img { width: 180px; margin: 0 auto 20px; border-radius: 10px; border: 1px solid var(--gris-marmol); }
+.datos-banco { background: var(--fondo-marmol); padding: 15px; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.8; color: var(--texto); width: 100%; }
+.paleta-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+.color-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
+.nota-reserva { font-size: 0.9rem; font-weight: 500; color: #b23a3a; background: #fdf0f0; padding: 10px; border-radius: 8px; margin-top: 15px; }
+
+/* ==================== PÁGINA 8: FOTOGRAFÍAS ==================== */
+.fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
+.fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 15px; }
+.fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.8; }
+.qr-galeria { max-width: 200px; margin: 0 auto 30px; padding: 10px; background: #fff; border-radius: 10px; }
+
+/* ==================== PÁGINA 10: RECOMENDACIONES ==================== */
+.recomendaciones { padding: 80px 20px; }
+.recomendaciones h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); text-align: center; margin-bottom: 50px; }
+.grid-recomendaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
+.recomendacion-card { background: #fff; padding: 30px; border-radius: 15px; border-left: 4px solid var(--dorado); display: flex; flex-direction: column; align-items: flex-start; }
+.recomendacion-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde-oliva); font-weight: 600; }
+.recomendacion-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); line-height: 1.6; }
+
+/* ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== */
+.invitado-rsvp { padding: 60px 20px 80px; text-align: center; }
+.invitado-rsvp h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 10px; line-height: 1; }
+.invitado-rsvp .frase { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--texto-suave); margin-bottom: 30px; }
+.nombre-invitado { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--verde-oliva); margin-bottom: 40px; }
+#rsvp-form { max-width: 500px; margin: 0 auto; text-align: left; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texto-suave); margin-bottom: 8px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto); outline: none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--dorado); }
+.btn-enviar { width: 100%; background: var(--verde-oliva); color: #fff; border: none; border-radius: 8px; padding: 15px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.3s; margin-top: 10px; }
+.btn-enviar:hover { background: var(--verde-oscuro); }
+
+/* ==================== PÁGINA 13: FOOTER ==================== */
+footer { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
+footer blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; max-width: 700px; margin: 0 auto 30px; line-height: 1.7; opacity: 0.9; }
+footer .te-esperamos { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
+footer h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); }
 
 /* ==================== MODAL MAPA ==================== */
-.modal {
-  display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-  width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);
-  align-items: center; justify-content: center; padding: 20px;
-}
+.modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; }
 .modal.activo { display: flex; }
-.modal-content {
-  background-color: #fff; padding: 20px; border-radius: 15px;
-  width: 100%; max-width: 600px; position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-.close-btn {
-  position: absolute; top: -15px; right: -15px; font-size: 30px;
-  cursor: pointer; color: #fff; background: var(--verde-oliva); 
-  width: 40px; height: 40px; border-radius: 50%; display: flex; 
-  align-items: center; justify-content: center; line-height: 1;
-}
-
-/* ==================== CRONOGRAMA (PÁGINA 5) ==================== */
-.cronograma{padding: 80px 20px; text-align: center}
-.cronograma h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 50px}
-.crono-grid{display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1000px; margin: 0 auto}
-.crono-item{flex: 1; min-width: 120px; display: flex; flex-direction: column; align-items: center;}
-.crono-item .hora{font-size: 1.5rem; font-style: italic; margin-bottom: 5px}
-.crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
-
-/* ==================== GALERÍA (PÁGINA 6) ==================== */
-.galeria{padding: 60px 20px; text-align: center}
-.galeria h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin-bottom: 40px}
-.galeria-grid{display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 900px; margin: 0 auto}
-.galeria-grid img{width: 100%; height: 300px; object-fit: cover; border-radius: 15px}
-
-/* ==================== COMPARTIR FOTOS Y REGALOS ==================== */
-.compartir{padding: 60px 20px; text-align: center}
-.card-compartir{
-  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 50px 30px; max-width: 600px; margin: 0 auto;
-  display: flex; flex-direction: column; align-items: center;
-}
-.card-compartir h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px}
-.card-compartir p{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--texto-suave); margin-bottom: 30px; text-transform: uppercase}
-
-.regalos{background: var(--verde-oliva); color: #fff; padding: 60px 20px; text-align: center}
-.regalos h2{font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin-bottom: 10px}
-.regalos .sub{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 20px; opacity: 0.9}
-.regalos .texto{font-style: italic; font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9}
-.regalos-grid{display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 800px; margin: 0 auto}
-.regalo-card{
-  background: transparent; border: 1px solid #fff; border-radius: 20px;
-  padding: 30px 20px; flex: 1; min-width: 250px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-.regalo-card img.qr{width: 150px; height: 150px; margin-bottom: 20px; border-radius: 10px; background: #fff; padding: 5px}
-.regalo-card p{font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6}
-
-/* ==================== VESTIMENTA Y RECOMENDACIONES ==================== */
-.recomendaciones{padding: 80px 20px; text-align: center; display: flex; flex-direction: column; align-items: center;}
-.recomendaciones .aviso{
-  font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em;
-  color: var(--texto-suave); max-width: 600px; margin: 0 auto 50px; line-height: 1.8;
-}
-.vestimenta-card{
-  background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
-  padding: 40px; max-width: 600px; margin: 0 auto 50px;
-  display: flex; flex-direction: column; align-items: center;
-}
-.vestimenta-card h3{font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); margin-bottom: 10px}
-.vestimenta-card .tipo{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 30px}
-.paleta-colores{display: flex; justify-content: center; gap: 15px; margin-bottom: 20px}
-.color-box{width: 40px; height: 40px; border-radius: 3px}
-.paleta-texto{font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: var(--texto-suave)}
-.nota-reserva{font-size: 1rem; font-style: italic; color: #b23a3a; margin-top: 20px}
-
-/* ==================== RSVP (PÁGINA 11 Y 12) ==================== */
-.rsvp{padding: 80px 20px; text-align: center; background: url('https://www.transparenttextures.com/patterns/cream-paper.png')}
-.rsvp h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado); margin-bottom: 15px; line-height: 1}
-.rsvp .frase{font-size: 1.2rem; font-style: italic; color: var(--texto-suave); margin-bottom: 40px}
-#rsvp-form{max-width: 500px; margin: 0 auto; text-align: left}
-.form-group{margin-bottom: 20px}
-.form-group label{display: block; font-size: 1rem; color: var(--texto-suave); margin-bottom: 5px}
-.form-group input, .form-group select, .form-group textarea{
-  width: 100%; padding: 12px 15px; border: 1px solid var(--texto-suave); border-radius: 8px;
-  background: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto); outline: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus{border-color: var(--dorado)}
-.btn-enviar{
-  background: var(--verde-oliva); color: #fff; border: none; border-radius: 8px;
-  padding: 12px 30px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
-  letter-spacing: 0.1em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-  margin: 0 auto; transition: background 0.3s;
-}
-.btn-enviar:hover{background: var(--verde-oscuro)}
-
-/* ==================== FOOTER ==================== */
-footer{text-align: center; padding: 60px 20px; background: var(--fondo-marmol)}
-footer .te-esperamos{font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 0.2em; color: var(--texto-suave); margin-bottom: 20px}
-footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dorado)}
+.modal-content { background-color: #fff; padding: 20px; border-radius: 15px; width: 100%; max-width: 600px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.close-btn { position: absolute; top: -15px; right: -15px; font-size: 30px; cursor: pointer; color: #fff; background: var(--verde-oliva); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px){
-  .hero{grid-template-columns: 1fr; padding: 20px; gap: 20px}
-  .hero-foto{height: 50vh}
-  .padres-grid, .eventos-grid{grid-template-columns: 1fr}
-  .galeria-grid{grid-template-columns: repeat(2, 1fr)}
-  .galeria-grid img{height: 200px}
-  .crono-grid{flex-direction: column; gap: 30px}
-  .conteo-numeros{gap: 15px}
-  .conteo-item .num{font-size: 2rem}
+  .hero, .grid-2-col, .grid-recomendaciones { grid-template-columns: 1fr; }
+  .hero-foto { height: 60vh; }
+  .galeria-grid-3, .galeria-grid-2 { grid-template-columns: 1fr; }
+  .galeria img { height: 250px; }
+  .crono-grid { flex-direction: column; gap: 30px; }
+  .conteo-numeros { gap: 15px; }
+  .conteo-item .num { font-size: 2.5rem; }
+  #rsvp-form { padding: 30px 20px; }
+  footer h2 { font-size: 3rem; }
 }
 </style>
 </head>
@@ -299,30 +252,23 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
 
 <main>
 
-  <!-- PÁGINA 1: HERO -->
+  <!-- ==================== PÁGINA 1: HERO ==================== -->
   <section class="hero">
     <img src="portada.jpg" alt="Jhonny y María" class="hero-foto reveal" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'">
-    
     <div class="hero-texto reveal delay-1">
       <h1>Jhonny <span>&</span> María</h1>
-      <div style="color: var(--dorado); font-size: 1.5rem; margin: 20px 0;">❦</div>
-      <p class="versiculo">
-        “Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre”<br>
-        <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-style: normal; letter-spacing: 0.1em; display: block; margin-top: 10px;">MATEO 19:6</span>
-      </p>
     </div>
   </section>
 
-  <!-- PÁGINA 2: FECHA Y CONTEO -->
+  <!-- ==================== PÁGINA 2: CONTEO Y CALENDARIO ==================== -->
   <section class="fecha-seccion">
     <div class="reveal">
       <div class="dia-semana">DOMINGO</div>
       <div class="numero">30</div>
       <div class="mes-año">NOVIEMBRE 2026</div>
       <div class="hora">5:00 pm</div>
-      <div style="color: var(--dorado); font-size: 1.5rem; margin-bottom: 30px;">❦</div>
     </div>
-
+    
     <div class="conteo-box reveal delay-1">
       <h4>Faltan</h4>
       <div class="conteo-numeros" id="countdown">
@@ -332,167 +278,189 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         <div class="conteo-item"><div class="num" id="segundos">00</div><div class="lbl">Seg.</div></div>
       </div>
     </div>
+
+    <!-- Enlace a Google Calendar -->
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Jhonny+y+Mar%C3%ADa&dates=20261130T170000/20261130T230000&details=¡Acompáñanos+a+celebrar+nuestra+boda!&location=Restaurante+La+Casa+1992" target="_blank" class="btn-calendario reveal delay-2">
+      <iconify-icon icon="mdi:calendar-plus" width="20"></iconify-icon> Agendar en mi calendario
+    </a>
   </section>
 
-  <!-- OLA SVG SUPERIOR -->
+  <!-- ==================== PÁGINA 3: FOTO Y VERSÍCULO ==================== -->
+  <section class="foto-versiculo">
+    <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
+    <blockquote class="reveal delay-1">
+      "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre"
+    </blockquote>
+    <cite class="reveal delay-2">Mateo 19:6</cite>
+  </section>
+
+  <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--fondo-marmol);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
-  <!-- PÁGINA 3: INVITADO Y PADRES -->
-  <section class="seccion-verde invitado">
+  <!-- ==================== PÁGINA 4: CEREMONIA ==================== -->
+  <section class="ceremonia">
     <div class="reveal">
-      <h3>QUERIDO (A)</h3>
-      <div class="nombre-inv" id="nombre-invitado">Invitado Especial</div>
-      <p class="pases">
-        Hemos Reservado<br>
-        <strong id="pases">2</strong>
-        Pase(s)<br>
-        En tu honor
-      </p>
+      <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado); margin: 0 auto 20px;"></iconify-icon>
+      <h2>Ceremonia</h2>
+      <div class="lugar">Restaurante La Casa 1992</div>
+      <p style="font-family:'Montserrat'; font-size: 0.8rem; margin-bottom:20px;">(Al frente de la cancha de Futbolmania)</p>
+      <div class="hora">5:00 pm</div>
+      <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación GPS</button>
     </div>
   </section>
 
-  <!-- OLA SVG INFERIOR -->
+  <!-- OLA SVG -->
   <div class="wave-container" style="background-color: var(--verde-oliva);">
     <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
     </svg>
   </div>
 
-  <section class="padres">
-    <h2 class="reveal">Agradecidos a<br>Nuestros Padres</h2>
-    <div class="padres-grid">
-      <div class="padres-col reveal delay-1">
-        <h4>Padres de la Novia</h4>
-        <p>José Hernán Saavedra<br>Lizeth del Carmen Osinaga</p>
-      </div>
-      <div class="padres-col reveal delay-2">
-        <h4>Padres del Novio</h4>
-        <p>Julio Maldonado Apaza<br>Ruth Quispe Honorio</p>
-      </div>
+  <!-- ==================== PÁGINA 5: TRES FOTOS ==================== -->
+  <section class="galeria">
+    <div class="galeria-grid-3">
+      <img src="nosotros1.jpg" class="reveal delay-1" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros2.jpg" class="reveal delay-2" alt="Foto 2" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80'">
+      <img src="nosotros3.jpg" class="reveal delay-3" alt="Foto 3" onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80'">
     </div>
   </section>
 
-  <!-- PÁGINA 4: CEREMONIA -->
-  <section class="eventos">
-    <div class="eventos-grid">
-      <!-- Ceremonia -->
-      <div class="evento-card reveal">
-        <iconify-icon icon="mdi:church" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
-        <h3>Ceremonia Religiosa</h3>
-        <div class="lugar">Restaurante<br>La Casa 1992</div>
-        <div class="hora">5:00 pm</div>
-        <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación</button>
-      </div>
-      <!-- Recepción -->
-      <div class="evento-card reveal delay-1">
-        <iconify-icon icon="mdi:glass-cocktail" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
-        <h3>Recepción Social</h3>
-        <div class="lugar">Restaurante<br>La Casa 1992</div>
-        <div class="hora">5:00 pm</div>
-        <button onclick="openMap('https://maps.google.com/maps?q=Restaurante+La+Casa+1992+Futbolmania&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="btn-ubicacion">Ver Ubicación</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- PÁGINA 5: CRONOGRAMA -->
-  <section class="cronograma">
-    <h2 class="reveal">Cronograma</h2>
+  <!-- ==================== PÁGINA 6: ITINERARIO ==================== -->
+  <section class="itinerario">
+    <h2 class="reveal">Itinerario</h2>
     <div class="crono-grid">
       <div class="crono-item reveal delay-1">
-        <iconify-icon icon="mdi:glass-cocktail" width="40" height="40" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+        <iconify-icon icon="mdi:glass-cocktail" width="45" height="45" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <div class="hora">5:00 pm</div>
-        <div class="nombre">Recepción<br>Social</div>
+        <div class="nombre">Recepción Social</div>
       </div>
       <div class="crono-item reveal delay-2">
-        <iconify-icon icon="mdi:heart" width="40" height="40" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+        <iconify-icon icon="mdi:heart" width="45" height="45" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <div class="hora">6:00 pm</div>
-        <div class="nombre">Entrada de<br>la Novia</div>
+        <div class="nombre">Entrada de la Novia</div>
       </div>
       <div class="crono-item reveal delay-3">
-        <iconify-icon icon="mdi:silverware-fork-knife" width="40" height="40" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+        <iconify-icon icon="mdi:silverware-fork-knife" width="45" height="45" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <div class="hora">8:00 pm</div>
         <div class="nombre">Cena</div>
       </div>
     </div>
   </section>
 
-  <!-- PÁGINA 6: NOSOTROS -->
-  <section class="galeria">
-    <h2 class="reveal">Nosotros</h2>
-    <div class="galeria-grid">
-      <img src="nosotros1.jpg" alt="Foto 1" class="reveal delay-1" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80'">
-      <img src="nosotros2.jpg" alt="Foto 2" class="reveal delay-2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
-      <img src="nosotros3.jpg" alt="Foto 3" class="reveal delay-3" onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80'">
-      <img src="nosotros4.jpg" alt="Foto 4" class="reveal delay-1" onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80'">
-      <img src="nosotros5.jpg" alt="Foto 5" class="reveal delay-2" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80'">
-      <img src="nosotros6.jpg" alt="Foto 6" class="reveal delay-3" onerror="this.src='https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=600&q=80'">
-    </div>
-  </section>
-
-  <!-- PÁGINA 7: COMPARTIR FOTOS -->
-  <section class="compartir">
-    <div class="card-compartir reveal">
-      <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
-      <h3>Comparte tus Fotos</h3>
-      <p>Te invitamos a compartir los momentos más especiales de nuestro evento a través de tus fotografías.</p>
-      <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ubicacion" style="display:inline-block;">Compartir Fotos</a>
-    </div>
-  </section>
-
-  <!-- PÁGINA 8: REGALOS -->
-  <section class="regalos">
-    <h2 class="reveal">Sugerencia de Regalos</h2>
-    <p class="sub reveal delay-1">TU PRESENCIA ES LA MAYOR BENDICIÓN PARA NOSOTROS</p>
-    <p class="texto reveal delay-2">"Si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:"</p>
-    
-    <div class="regalos-grid">
-      <!-- Efectivo -->
-      <div class="regalo-card reveal delay-1">
-        <iconify-icon icon="mdi:email-outline" width="50" height="50" style="color: #fff; margin-bottom: 20px;"></iconify-icon>
-        <p>Efectivo en Divisas $<br>(Habrá un buzón)</p>
-      </div>
-      <!-- Pago Móvil -->
-      <div class="regalo-card reveal delay-2">
-        <img src="qr.jpeg" alt="Pago Móvil Banesco" class="qr" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
-        <p>
-          Banesco<br>
+  <!-- ==================== PÁGINA 7: REGALOS Y VESTIMENTA ==================== -->
+  <section class="regalos-vestimenta">
+    <div class="grid-2-col">
+      <!-- Regalos -->
+      <div class="card-box reveal">
+        <iconify-icon icon="mdi:gift" width="50" height="50" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+        <h3>Sugerencia de Regalos</h3>
+        <p>“Tu presencia es la mayor bendición para nosotros, pero si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:”</p>
+        <p style="font-weight: bold; color: var(--verde-oliva); margin-bottom: 10px;">Efectivo en Divisas $ o Pago Móvil</p>
+        <img src="qr.jpg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <div class="datos-banco">
+          <strong>Banesco</strong><br>
+          Código: 0134<br>
           C.I: V-27695778<br>
           Tlf: 0412-0376834
-        </p>
+        </div>
+        <p style="font-size: 0.85rem; margin-top: 15px; font-style: italic;">Nota: En el lugar de la ceremonia, se encontrará ubicado una caja o un cofre donde los invitados podrán insertar su sobre con su respectivo regalo.</p>
+      </div>
+
+      <!-- Vestimenta -->
+      <div class="card-box reveal delay-1">
+        <iconify-icon icon="mdi:hanger" width="50" height="50" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+        <h3>Código de Vestimenta</h3>
+        <p>Formal - Elegante</p>
+        <div class="paleta-container">
+          <div class="color-box" style="background:#465440;"></div>
+          <div class="color-box" style="background:#a68a61;"></div>
+          <div class="color-box" style="background:#593b22;"></div>
+          <div class="color-box" style="background:#1b2a47;"></div> <!-- Azul marino -->
+        </div>
+        <div class="nota-reserva">
+          Nota Importante: El color blanco y el azul marino están reservados solo para los novios.
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PÁGINA 9 Y 10: RECOMENDACIONES Y VESTIMENTA -->
+  <!-- OLA SVG -->
+  <div class="wave-container" style="background-color: var(--fondo-marmol);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="#5a6b56" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+    </svg>
+  </div>
+
+  <!-- ==================== PÁGINA 8: FOTOGRAFÍAS ==================== -->
+  <section class="fotos-invitados">
+    <div class="reveal">
+      <iconify-icon icon="mdi:camera" width="60" height="60" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
+      <h2>Fotografías</h2>
+      <p>“Ayúdanos a guardar todos los momentos que captures durante nuestro matrimonio, subiendo tus fotos en esta sección”</p>
+      <img src="qr-galeria.jpg" alt="QR Galería" class="qr-galeria" onerror="this.src='https://via.placeholder.com/200?text=Sube+tu+QR'">
+      <div>
+        <a href="https://drive.google.com/drive/folders/1X7vevw_OXImAzGZvfGNQrgYijCsv0Wwh?usp=sharing" target="_blank" class="btn-ubicacion" style="background: var(--dorado); color: #fff;">Subir Mis Fotos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OLA SVG -->
+  <div class="wave-container" style="background-color: var(--verde-oliva);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="#f7f6f2" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+    </svg>
+  </div>
+
+  <!-- ==================== PÁGINA 9: DOS FOTOS ==================== -->
+  <section class="galeria">
+    <div class="galeria-grid-2">
+      <img src="nosotros4.jpg" class="reveal delay-1" alt="Foto 4" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80'">
+      <img src="nosotros5.jpg" class="reveal delay-2" alt="Foto 5" onerror="this.src='https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=800&q=80'">
+    </div>
+  </section>
+
+  <!-- ==================== PÁGINA 10: RECOMENDACIONES ==================== -->
   <section class="recomendaciones">
-    <iconify-icon icon="mdi:account-off" width="50" height="50" style="color: var(--texto-suave); margin-bottom: 15px;" class="reveal"></iconify-icon>
-    <div class="aviso reveal delay-1">
-      AUNQUE AMAMOS A SUS PEQUEÑOS, ESTE DÍA ESPECIAL ES SOLO PARA ADULTOS, LES PEDIMOS QUE NOS ACOMPAÑEN SIN NIÑOS.
-    </div>
-
-    <div class="vestimenta-card reveal delay-2">
-      <iconify-icon icon="mdi:hanger" width="60" height="60" style="color: var(--dorado); margin-bottom: 20px;"></iconify-icon>
-      <h3>Código de Vestimenta</h3>
-      <div class="tipo">Formal - Elegante</div>
-      
-      <div class="paleta-texto">Colores Sugeridos</div>
-      <div class="paleta-colores">
-        <div class="color-box" style="background:#465440;"></div>
-        <div class="color-box" style="background:#a68a61;"></div>
-        <div class="color-box" style="background:#593b22;"></div>
+    <h2 class="reveal">Recomendaciones</h2>
+    <div class="grid-recomendaciones">
+      <div class="recomendacion-card reveal delay-1">
+        <iconify-icon icon="mdi:account-off" width="40" height="40" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
+        <h4>Cero Niños</h4>
+        <p>Hemos preparado una recepción, exclusivamente para adultos.</p>
       </div>
-      <p class="nota-reserva">El color blanco y el azul marino están reservados solo para los novios.</p>
+      <div class="recomendacion-card reveal delay-2">
+        <iconify-icon icon="mdi:vibrate" width="40" height="40" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
+        <h4>Celular en Vibración</h4>
+        <p>Usar el celular en modo vibración para no interrumpir la ceremonia.</p>
+      </div>
+      <div class="recomendacion-card reveal delay-3">
+        <iconify-icon icon="mdi:silverware-fork-knife" width="40" height="40" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
+        <h4>Menú y Copa</h4>
+        <p>“Queremos que disfrutes cada momento con nosotros. Te informamos que la comida y bebida ofrecida durante la celebración, estará completamente a cargo de los novios. Pero cualquier consumo adicional o pedido extra realizado directamente al restaurante, correrá por cuenta del invitado quien lo solicite”</p>
+      </div>
+      <div class="recomendacion-card reveal delay-1">
+        <iconify-icon icon="mdi:clock-outline" width="40" height="40" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
+        <h4>Puntualidad</h4>
+        <p>“La puntualidad y el orden es muy importante para nuestra ceremonia. Te pedimos encarecidamente llegar a la hora indicada para que nuestro itinerario fluya sin contratiempos y podamos ver todas las bendiciones de Dios para con nosotros ese día”</p>
+      </div>
     </div>
   </section>
 
-  <!-- PÁGINA 11 Y 12: RSVP -->
-  <section class="rsvp" id="rsvp">
-    <h2 class="reveal">Confirma tu<br>Asistencia</h2>
-    <p class="frase reveal delay-1">Será de mucha alegría para nosotros contar con su compañía en este día tan importante.</p>
+  <!-- ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== -->
+  <section class="invitado-rsvp" id="rsvp">
+    <div class="reveal">
+      <p class="frase">“Nuestra felicidad no estaría completa sin ti en nuestra celebración”</p>
+      <div class="nombre-invitado" id="nombre-invitado">Invitado Especial</div>
+    </div>
+
+    <div class="reveal delay-1">
+      <h2>Confirma tu Asistencia</h2>
+      <p class="frase" style="font-size: 1.1rem; margin-bottom: 40px;">Estamos cuidando cada detalle para que pases un día inolvidable, ayúdanos confirmando tu asistencia lo antes posible.</p>
+    </div>
 
     <form id="rsvp-form" class="reveal delay-2">
       <div class="form-group">
@@ -507,22 +475,25 @@ footer h2{font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--dor
         </select>
       </div>
       <div class="form-group">
-        <label>Mensaje</label>
-        <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
+        <label>Mensaje (Opcional)</label>
+        <textarea id="mensaje" rows="3" placeholder="Dedica unas palabras..."></textarea>
       </div>
       <button type="submit" class="btn-enviar">
         <iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon>
-        Enviar
+        Enviar Confirmación
       </button>
       <div id="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--verde-oliva);"></div>
     </form>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ==================== PÁGINA 13: FOOTER ==================== -->
   <footer>
-    <div class="te-esperamos">¡TE ESPERAMOS!</div>
-    <h2 class="reveal">Jhonny y María</h2>
-    <div style="margin-top: 20px; font-size: 1.5rem; color: var(--dorado);" class="reveal delay-1">❦</div>
+    <blockquote class="reveal">
+      "Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios. El que no ama, no ha conocido a Dios; porque Dios es amor" <br>
+      <span style="font-family:'Montserrat'; font-size:0.8rem; letter-spacing:0.1em; margin-top:15px; display:block; color:var(--dorado);">1 Juan 4:7-8</span>
+    </blockquote>
+    <div class="te-esperamos reveal delay-1">¡Te esperamos!</div>
+    <h2 class="reveal delay-2">Jhonny y María</h2>
   </footer>
 
 </main>
@@ -550,7 +521,6 @@ function abrirInvitacion() {
   document.getElementById('portada').classList.add('abrir');
   setTimeout(() => {
     document.getElementById('portada').style.display = 'none';
-    // Llamar a la función que activa las animaciones al abrir
     iniciarAnimacionesScroll();
   }, 1500);
   
@@ -567,13 +537,12 @@ function iniciarAnimacionesScroll() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Dejar de observar una vez que ya se animó
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.1, // Se activa cuando el 10% del elemento es visible
-    rootMargin: "0px 0px -50px 0px" // Se activa un poco antes de llegar al borde inferior
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
   });
 
   document.querySelectorAll('.reveal').forEach(el => {
@@ -589,7 +558,6 @@ const nombreInvitado = params.get('nombre') || 'Invitado Especial';
 const pases = params.get('invitados') || '2';
 
 document.getElementById('nombre-invitado').textContent = nombreInvitado;
-document.getElementById('pases').textContent = pases;
 document.getElementById('nombre').value = nombreInvitado !== 'Invitado Especial' ? nombreInvitado : '';
 
 // ==========================================
@@ -621,7 +589,7 @@ setInterval(actualizarConteo, 1000);
 actualizarConteo();
 
 // ==========================================
-// 6. BOTÓN FLOTANTE DE MÚSICA (Play/Pause)
+// 6. BOTÓN FLOTANTE DE MÚSICA
 // ==========================================
 const musicBtn = document.getElementById('music-btn');
 musicBtn.addEventListener('click', () => {
@@ -667,9 +635,8 @@ document.getElementById('rsvp-form').addEventListener('submit', function(e) {
   document.getElementById('status-msg').innerText = "¡Abriendo WhatsApp para enviar tu confirmación!";
 });
 
-// Iniciar animaciones al cargar la página directamente (por si se recarga sin portada)
+// Iniciar animaciones si se recarga la página
 window.addEventListener('load', () => {
-    // Si la portada ya está oculta (recarga), activar animaciones
     if (document.getElementById('portada').style.display === 'none') {
         iniciarAnimacionesScroll();
     }
