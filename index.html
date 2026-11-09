@@ -108,14 +108,14 @@ img{max-width: 100%; display: block}
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px; /* Separación entre fotos */
-  max-width: 450px; /* Ancho máximo para que no se estiren demasiado en PC */
+  gap: 25px;
+  max-width: 450px;
   margin: 0 auto;
 }
 .galeria-vertical img { 
   width: 100%; 
   height: auto;
-  aspect-ratio: 4 / 5; /* Proporción vertical (retrato) */
+  aspect-ratio: 4 / 5;
   object-fit: cover; 
   border-radius: 15px; 
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -136,8 +136,22 @@ img{max-width: 100%; display: block}
 .card-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
 .qr-img { width: 180px; margin: 0 auto 20px; border-radius: 10px; border: 1px solid #eee; }
 .datos-banco { background: var(--fondo-marmol); padding: 15px; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.8; color: var(--texto); width: 100%; }
-.paleta-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-.color-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
+
+/* ==================== PALETA DE COLORES ACTUALIZADA ==================== */
+.paleta-container { 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; /* Permite que bajen de línea en celular */
+  gap: 12px; 
+  margin: 20px 0; 
+}
+.color-box { 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; 
+  border: 2px solid #fff; 
+  box-shadow: 0 0 0 1px #ddd; 
+}
 .nota-reserva { font-size: 0.9rem; font-weight: 500; color: #b23a3a; background: #fdf0f0; padding: 10px; border-radius: 8px; margin-top: 15px; }
 
 .fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
@@ -272,7 +286,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     <cite class="reveal delay-2">Mateo 19:6</cite>
   </section>
 
-  <!-- ==================== GALERÍA VERTICAL (3 FOTOS) ==================== -->
   <section class="galeria">
     <div class="galeria-vertical">
       <img src="nosotros1.jpg" class="reveal delay-1" alt="Foto 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'">
@@ -323,14 +336,20 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
         <iconify-icon icon="mdi:hanger" width="50" height="50" style="color: var(--dorado); margin-bottom: 15px;"></iconify-icon>
         <h3>Código de Vestimenta</h3>
         <p>Formal - Elegante</p>
+        
+        <!-- NUEVA PALETA DE COLORES (SIN AZUL) -->
         <div class="paleta-container">
-          <div class="color-box" style="background:#465440;"></div>
-          <div class="color-box" style="background:#a68a61;"></div>
-          <div class="color-box" style="background:#593b22;"></div>
-          <div class="color-box" style="background:#1b2a47;"></div>
+          <div class="color-box" style="background:#29544a;"></div> <!-- Verde Oscuro -->
+          <div class="color-box" style="background:#9e3b2b;"></div> <!-- Rojo Ladrillo -->
+          <div class="color-box" style="background:#b85729;"></div> <!-- Naranja Quemado -->
+          <div class="color-box" style="background:#463328;"></div> <!-- Marrón -->
+          <div class="color-box" style="background:#8e9174;"></div> <!-- Verde Oliva -->
+          <div class="color-box" style="background:#701d2b;"></div> <!-- Vino -->
         </div>
+        
+        <!-- NOTA ACTUALIZADA (SIN AZUL) -->
         <div class="nota-reserva">
-          Nota Importante: El color blanco y el azul marino están reservados solo para los novios.
+          Nota Importante: El color blanco está reservado exclusivamente para la novia.
         </div>
       </div>
     </div>
@@ -347,7 +366,6 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- ==================== GALERÍA VERTICAL (2 FOTOS) ==================== -->
   <section class="galeria">
     <div class="galeria-vertical">
       <img src="nosotros4.jpg" class="reveal delay-1" alt="Foto 4" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80'">
