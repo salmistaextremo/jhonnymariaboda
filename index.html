@@ -20,7 +20,7 @@
   --verde-oliva: #4A5947;  
   --verde-oscuro: #384334;
   --dorado: #D4AF37;       
-  --dorado-claro: #F4E8C1; /* Dorado casi blanco para máximo contraste */
+  --dorado-claro: #F4E8C1; 
   --texto: #2b2b2b;
   --texto-suave: #555555;
   --blanco: #ffffff;
@@ -96,7 +96,7 @@ img{max-width: 100%; display: block}
 .hero-texto h1 span{font-size: 0.4em; display: block; margin: 10px 0}
 
 /* ==================== PÁGINA 2: CONTEO Y CALENDARIO ==================== */
-.fecha-seccion{ text-align: center; padding: 80px 20px 60px; }
+.fecha-seccion{ text-align: center; padding: 80px 20px 40px; } /* Padding bottom reducido para la ola */
 .fecha-seccion .dia-semana{font-family: 'Montserrat', sans-serif; letter-spacing: 0.4em; font-size: 0.9rem; color: var(--texto-suave)}
 .fecha-seccion .numero{font-size: 6rem; line-height: 1; color: var(--verde-oliva); margin: 10px 0; font-family: 'Cormorant Garamond', serif}
 .fecha-seccion .mes-año{font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--dorado); text-transform: uppercase; margin-bottom: 20px}
@@ -121,7 +121,7 @@ img{max-width: 100%; display: block}
 .btn-calendario:hover { background: var(--verde-oliva); color: var(--blanco); }
 
 /* ==================== PÁGINA 3: FOTO Y VERSÍCULO ==================== */
-.foto-versiculo { padding: 60px 20px; text-align: center; }
+.foto-versiculo { padding: 60px 20px 0; text-align: center; } /* Padding bottom 0 para la ola */
 .foto-versiculo .foto-full {
   width: 100%; max-width: 500px; margin: 0 auto 40px;
   border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -133,10 +133,20 @@ img{max-width: 100%; display: block}
 .foto-versiculo cite {
   font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--dorado); font-style: normal;
+  display: block; margin-bottom: 40px;
+}
+
+/* ==================== SOLUCIÓN DEFINITIVA A LAS OLAS ==================== */
+.svg-wave {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-bottom: -2px; /* Esto evita el espacio blanco */
+  vertical-align: middle;
 }
 
 /* ==================== PÁGINA 4: CEREMONIA ==================== */
-.ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
+.ceremonia { background: var(--verde-oliva); color: #fff; text-align: center; padding: 60px 20px 40px; }
 .ceremonia h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 20px; }
 .ceremonia .lugar { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
 .ceremonia .hora { font-size: 2.5rem; font-style: italic; margin-bottom: 30px; color: #fff; }
@@ -144,29 +154,9 @@ img{max-width: 100%; display: block}
   background: var(--blanco); color: var(--verde-oliva); text-decoration: none;
   padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.3s;
-  cursor: pointer; border: none;
+  cursor: pointer; border: none; display: inline-block; margin-bottom: 20px;
 }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
-
-/* ==================== ONDAS SVG (SOLUCIÓN DEFINITIVA A LÍNEAS BLANCAS) ==================== */
-.wave-container { 
-  width: 100%; 
-  display: block;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Evita desbordamientos */
-  line-height: 0;
-  font-size: 0;
-}
-.wave-container svg { 
-  width: 100%; 
-  height: 55px; 
-  display: block;
-  margin: 0;
-  padding: 0;
-  /* Esto soluciona el gap blanco tirando 1px hacia arriba */
-  transform: translateY(-1px); 
-}
 
 /* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
 .galeria { padding: 60px 20px; text-align: center; }
@@ -183,8 +173,8 @@ img{max-width: 100%; display: block}
 .crono-item .nombre{font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--texto-suave); text-transform: uppercase}
 
 /* ==================== PÁGINA 7: REGALOS Y VESTIMENTA ==================== */
-.regalos-vestimenta { padding: 60px 20px; }
-.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+.regalos-vestimenta { padding: 60px 20px 0; } /* Padding bottom 0 para la ola */
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto 40px; }
 .card-box {
   background: #fff; border: 1px solid var(--dorado); border-radius: 20px;
   padding: 40px 30px; text-align: center; display: flex; flex-direction: column; align-items: center;
@@ -198,7 +188,7 @@ img{max-width: 100%; display: block}
 .nota-reserva { font-size: 0.9rem; font-weight: 500; color: #b23a3a; background: #fdf0f0; padding: 10px; border-radius: 8px; margin-top: 15px; }
 
 /* ==================== PÁGINA 8: FOTOGRAFÍAS ==================== */
-.fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
+.fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px 40px; }
 .fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 15px; }
 .fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.8; }
 
@@ -316,21 +306,26 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </a>
   </section>
 
-  <!-- ==================== PÁGINA 3: FOTO Y VERSÍCULO ==================== -->
-  <section class="foto-versiculo">
-    <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
-    <blockquote class="reveal delay-1">
-      "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre"
-    </blockquote>
-    <cite class="reveal delay-2">Mateo 19:6</cite>
-  </section>
+  <!-- OLA SVG 1 -->
+  <svg class="svg-wave" style="background-color: var(--fondo-marmol);" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+  </svg>
 
-  <!-- OLA SVG -->
-  <div class="wave-container" style="background-color: var(--fondo-marmol);">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-    </svg>
-  </div>
+  <!-- ==================== PÁGINA 3: FOTO Y VERSÍCULO (Se movió aquí para respetar el orden) ==================== -->
+  <section class="foto-versiculo" style="background-color: var(--verde-oliva); padding-top: 0;">
+    <div style="background-color: var(--fondo-marmol); padding: 60px 20px; border-radius: 0 0 50px 50px;">
+      <img src="foto-verso.jpg" class="foto-full reveal" alt="Nosotros" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80'">
+      <blockquote class="reveal delay-1">
+        "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios Juntó, no lo separa el hombre"
+      </blockquote>
+      <cite class="reveal delay-2">Mateo 19:6</cite>
+    </div>
+  </section>
+  
+  <!-- OLA SVG 2 -->
+  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+  </svg>
 
   <!-- ==================== PÁGINA 4: CEREMONIA ==================== -->
   <section class="ceremonia">
@@ -344,12 +339,10 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG -->
-  <div class="wave-container" style="background-color: var(--verde-oliva);">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-    </svg>
-  </div>
+  <!-- OLA SVG 3 -->
+  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+  </svg>
 
   <!-- ==================== PÁGINA 5: TRES FOTOS ==================== -->
   <section class="galeria">
@@ -391,7 +384,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
         <h3>Sugerencia de Regalos</h3>
         <p>“Tu presencia es la mayor bendición para nosotros, pero si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:”</p>
         <p style="font-weight: bold; color: var(--verde-oliva); margin-bottom: 10px;">Efectivo en Divisas $ o Pago Móvil</p>
-        <img src="qr.jpeg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <img src="qr.jpg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <div class="datos-banco">
           <strong>Banesco</strong><br>
           Código: 0134<br>
@@ -419,12 +412,10 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG -->
-  <div class="wave-container" style="background-color: var(--fondo-marmol);">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-    </svg>
-  </div>
+  <!-- OLA SVG 4 -->
+  <svg class="svg-wave" style="background-color: var(--fondo-marmol);" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#4A5947" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+  </svg>
 
   <!-- ==================== PÁGINA 8: FOTOGRAFÍAS ==================== -->
   <section class="fotos-invitados">
@@ -438,12 +429,10 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     </div>
   </section>
 
-  <!-- OLA SVG -->
-  <div class="wave-container" style="background-color: var(--verde-oliva);">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-    </svg>
-  </div>
+  <!-- OLA SVG 5 -->
+  <svg class="svg-wave" style="background-color: var(--verde-oliva);" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#f9f9f8" d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+  </svg>
 
   <!-- ==================== PÁGINA 9: DOS FOTOS ==================== -->
   <section class="galeria">
@@ -458,7 +447,8 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
     <h2 class="reveal">Recomendaciones</h2>
     <div class="grid-recomendaciones">
       <div class="recomendacion-card reveal delay-1">
-        <iconify-icon icon="mdi:account-off" width="40" height="40" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
+        <!-- ICONO DE NIÑO AQUI -->
+        <iconify-icon icon="mdi:human-child" width="45" height="45" style="color: var(--verde-oliva); margin-bottom: 15px;"></iconify-icon>
         <h4>Cero Niños</h4>
         <p>Hemos preparado una recepción, exclusivamente para adultos.</p>
       </div>
