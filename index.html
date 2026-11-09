@@ -14,13 +14,13 @@
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
-/* ==================== VARIABLES (CONTRASTE MEJORADO) ==================== */
+/* ==================== VARIABLES ==================== */
 :root{
-  --fondo-marmol: #f9f9f8; /* Gris más claro y limpio */
-  --verde-oliva: #4A5947;  /* Verde un poco más oscuro para contraste */
-  --verde-oscuro: #3A4637;
-  --dorado: #D4AF37;       /* Dorado más brillante y metálico */
-  --dorado-claro: #E8D099; /* Dorado claro para textos sobre verde */
+  --fondo-marmol: #f9f9f8; 
+  --verde-oliva: #4A5947;  
+  --verde-oscuro: #384334;
+  --dorado: #D4AF37;       
+  --dorado-claro: #F4E8C1; /* Dorado casi blanco para máximo contraste */
   --texto: #2b2b2b;
   --texto-suave: #555555;
   --blanco: #ffffff;
@@ -73,7 +73,7 @@ img{max-width: 100%; display: block}
 #music-btn{
   position: fixed; bottom: 20px; right: 20px; z-index: 100;
   width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(74, 89, 71, 0.85); color: #fff; border: none;
+  background: rgba(74, 89, 71, 0.9); color: #fff; border: none;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   backdrop-filter: blur(5px); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -148,14 +148,15 @@ img{max-width: 100%; display: block}
 }
 .btn-ubicacion:hover{background: var(--dorado); color: #fff;}
 
-/* ==================== ONDAS SVG (SIN ESPACIOS EN BLANCO) ==================== */
+/* ==================== ONDAS SVG (SOLUCIÓN DEFINITIVA A LÍNEAS BLANCAS) ==================== */
 .wave-container { 
   width: 100%; 
-  line-height: 0; 
-  font-size: 0;
   display: block;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Evita desbordamientos */
+  line-height: 0;
+  font-size: 0;
 }
 .wave-container svg { 
   width: 100%; 
@@ -163,7 +164,8 @@ img{max-width: 100%; display: block}
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateY(1px); /* Soluciona la línea blanca de renderizado */
+  /* Esto soluciona el gap blanco tirando 1px hacia arriba */
+  transform: translateY(-1px); 
 }
 
 /* ==================== PÁGINAS 5 Y 9: GALERÍAS ==================== */
@@ -198,7 +200,7 @@ img{max-width: 100%; display: block}
 /* ==================== PÁGINA 8: FOTOGRAFÍAS ==================== */
 .fotos-invitados { background: var(--verde-oliva); color: #fff; text-align: center; padding: 70px 20px; }
 .fotos-invitados h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado-claro); margin-bottom: 15px; }
-.fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.8; }
+.fotos-invitados p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.8; }
 
 /* ==================== PÁGINA 10: RECOMENDACIONES ==================== */
 .recomendaciones { padding: 80px 20px; }
@@ -213,29 +215,13 @@ img{max-width: 100%; display: block}
 
 /* ==================== DIVISORES DECORATIVOS ==================== */
 .divisor-decorativo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px auto;
-  width: 100%;
-  max-width: 250px;
+  display: flex; align-items: center; justify-content: center; margin: 30px auto; width: 100%; max-width: 250px;
 }
-.divisor-decorativo::before,
-.divisor-decorativo::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--dorado);
-  opacity: 0.5;
+.divisor-decorativo::before, .divisor-decorativo::after {
+  content: ''; flex: 1; height: 1px; background: var(--dorado); opacity: 0.6;
 }
-.divisor-decorativo span {
-  padding: 0 15px;
-  color: var(--dorado);
-  font-size: 1.2rem;
-}
-/* Variante para fondos oscuros */
-.divisor-decorativo.dark::before,
-.divisor-decorativo.dark::after { background: var(--dorado-claro); opacity: 0.6; }
+.divisor-decorativo span { padding: 0 15px; color: var(--dorado); font-size: 1.2rem; }
+.divisor-decorativo.dark::before, .divisor-decorativo.dark::after { background: var(--dorado-claro); opacity: 0.8; }
 .divisor-decorativo.dark span { color: var(--dorado-claro); }
 
 /* ==================== PÁGINA 11 Y 12: INVITADO Y RSVP ==================== */
@@ -405,7 +391,7 @@ footer h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(-
         <h3>Sugerencia de Regalos</h3>
         <p>“Tu presencia es la mayor bendición para nosotros, pero si quieres tener un detalle con nosotros, te dejamos las siguientes opciones:”</p>
         <p style="font-weight: bold; color: var(--verde-oliva); margin-bottom: 10px;">Efectivo en Divisas $ o Pago Móvil</p>
-        <img src="qr.jpg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
+        <img src="qr.jpeg" alt="Pago Móvil" class="qr-img" onerror="this.src='https://via.placeholder.com/150?text=Sube+tu+QR'">
         <div class="datos-banco">
           <strong>Banesco</strong><br>
           Código: 0134<br>
